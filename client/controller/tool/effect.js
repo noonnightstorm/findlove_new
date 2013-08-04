@@ -17,12 +17,13 @@ win.Effect = {
 		init : function(){
 			win.Effect.gameHall.showMenu();
 			win.Effect.gameHall.showHelp();
+			win.Effect.gameHall.setScroll();
 		},
 		showMenu : function(){
 			var arrow = $('#hall-nav-arrow');
 			var navBtn = $('.nav-btn');
 			var content = $('.content');
-			for(var i = 0;i<navBtn.length;i++){
+			for(var i = 0;i < navBtn.length;i++){
 				$(navBtn[i]).attr("num",i);
 			}
 			$(navBtn).click(function(){
@@ -53,7 +54,7 @@ win.Effect = {
 				if(win.Effect.gameHall.helpMark){
 					$('#hall-help').animate({marginLeft:'600px'},'fast',function(){
 						win.Effect.gameHall.helpMark = false;
-						$('.hidden-arrow').css({
+						$('.hall-help-hidden-arrow').css({
 							'-webkit-transform':'rotate(180deg)',
 							'-moz-transform':'rotate(180deg)',
 							'-o-transform':'rotate(180deg)',
@@ -64,7 +65,7 @@ win.Effect = {
 				else{
 					$('#hall-help').animate({marginLeft:'0px'},'fast',function(){
 						win.Effect.gameHall.helpMark = true;
-						$('.hidden-arrow').css({
+						$('.hall-help-hidden-arrow').css({
 							'-webkit-transform':'rotate(0deg)',
 							'-moz-transform':'rotate(0deg)',
 							'-o-transform':'rotate(0deg)',
@@ -72,6 +73,20 @@ win.Effect = {
 						});
 					});
 				}
+			});
+		},
+		setScroll : function(){
+			var up = $('.hall-scroll-up');
+			var down = $('.hall-scroll-down');
+			up.click(function(){
+				var parent = $(this).parent();
+				var curScrollTop = parent.scrollTop();
+				parent.animate({scrollTop:curScrollTop-170},'fast');
+			});
+			down.click(function(){
+				var parent = $(this).parent();
+				var curScrollTop = parent.scrollTop();
+				parent.animate({scrollTop:curScrollTop+170},'fast');
 			});
 		}
 	}
