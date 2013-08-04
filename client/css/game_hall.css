@@ -81,14 +81,14 @@
 }
 
 /*游戏帮助*/
-#help{
+#hall-help{
 	width: 50px;
 	height: 125px;
 	position: absolute;
-	margin-top: -150px;
+	margin-top: -140px;
 	cursor: pointer;
 }
-.arrow-container{
+.hall-help-arrow-container{
 	width: 7px;
 	height: 100%;
 	float: left;
@@ -98,7 +98,7 @@
 	-o-border-radius: 0 3px 3px 0;
 	border-radius: 0 3px 3px 0;
 }
-.hidden-arrow{
+.hall-help-hidden-arrow{
 	width: 0;
 	height: 0;
 	margin-top: 55px;
@@ -106,7 +106,7 @@
 	border-left: 6px solid #fff;
 	border-bottom: 3px solid transparent;
 }
-.help-btn{
+.hall-help-btn{
 	width: 20px;
 	margin: 10px 0 0 7px;
 	padding: 5px;
@@ -119,15 +119,38 @@
 	color: #fff;
 	font-size: 20px;
 }
-.help-btn:hover{
+.hall-help-btn:hover{
 	background: #acf;
 }
-.sub-help{
-	width: 300px;
-	height: 500px;
+.hall-help-text{
+	width: 560px;
+	height: 190px;
 	float: left;
-	margin-left: -300px;
-	background: #82b8fc;
+	margin: -40px 0 0 -600px;
+	padding: 10px 20px;
+	background: rgba(234,249,247,0.8);
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	-o-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+	-webkit-box-shadow: 0 0 10px rgba(255,51,133,0.6);
+	-moz-box-shadow: 0 0 10px rgba(255,51,133,0.6);
+	-o-box-shadow: 0 0 10px rgba(255,51,133,0.6);
+	box-shadow: 0 0 10px rgba(255,51,133,0.6);
+	font-size: 20px;
+	line-height: 40px;
+}
+.hall-help-text h1{
+	color: #ff3385;
+	line-height: 40px;
+	text-align: center;
+}
+.hall-help-part{
+	color: #82b8fc;
+	font-weight: bold;
+}
+.hall-help-content{
+	color: #ff3385;
 }
 
 /*房间列表*/
