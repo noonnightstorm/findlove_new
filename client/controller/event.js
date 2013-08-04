@@ -15,4 +15,8 @@ if (Meteor.isClient) {
 	});
 	Template.game_hall_boy.rendered = win.Effect.gameHall.init;
 	Template.game_hall_girl.rendered = win.Effect.gameHall.init;
+	Template.game_hall_boy.events({
+		"submit #new-room-form" : win.HallHandler.addRoom,
+		"submit #personal-info-form" : win.HallHandler.updatePersonInfo
+	});
 }

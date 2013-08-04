@@ -5,21 +5,23 @@
 				<div class="all-room-logo hall-all-image"></div>
 				<div class="hall-scroll-btn hall-scroll-up" id="hall-room-up"></div>
 				<div class="hall-scroll-btn hall-scroll-down" id="hall-room-down"></div>
+				{{#each room}}
 				<div class="hall-room">
 					<p>
-						<span class="hall-room-label">房间：</span>
+						<span class="hall-room-label">房间：{{name}}</span>
 						<span class="hall-room-info"></span>
 					</p>
 					<p>
-						<span class="hall-room-label">创建人：</span>
+						<span class="hall-room-label">创建人：{{owner}}</span>
 						<span class="hall-room-info"></span>
 					</p>
 					<p>
-						<span class="hall-room-label">人数：</span>
+						<span class="hall-room-label">人数：{{num}}</span>
 						<span class="hall-room-info"></span>
 					</p>
 					<button class="hall-enter-btn">进入</button>
 				</div>
+				{{/each}}
 			</div>
 			<div class="nav">
 				<div id="hall-nav-arrow"></div>
@@ -58,7 +60,7 @@
 						<div class="title">建立房间</div>
 						<div class="castle hall-all-image"></div>
 						<form action="" id="new-room-form">
-							<input type="text" class="new-room-input  hall-all-image" placeholder="房间名字"><br>
+							<input type="text" class="new-room-input  hall-all-image" placeholder="房间名字" name="name"><br>
 							<button class="hall-back-btn">←</button>
 							<button class="hall-submit-btn">ok</button>
 						</form>
@@ -132,17 +134,17 @@
 				</div>
 				<div class="content">
 					<div class="info-box">
-					<form action="" id="personal-info">
+					<form action="" id="personal-info-form">
 						<label for="real-name" class="form-label">真实姓名</label>
-						<input type="text" id="real-name" class="hall-form-input"><br>
+						<input type="text" id="real-name" class="hall-form-input" name="real_name"><br>
 						<label for="telephone" class="form-label">固定电话</label>
-						<input type="text" id="telephone" class="hall-form-input"><br>
+						<input type="text" id="telephone" class="hall-form-input" name="tel_phone"><br>
 						<label for="mobile" class="form-label">手机号码</label>
-						<input type="text" id="mobile" class="hall-form-input"><br>
+						<input type="text" id="mobile" class="hall-form-input" name="moblie_phone"><br>
 						<label for="standard" class="form-label">择偶标准</label><br>
-						<textarea name="" id="standard" class="hall-form-input"></textarea>
+						<textarea name="" id="standard" class="hall-form-input" name="standard"></textarea>
 						<label for="announce" class="form-label">爱情宣言</label><br>
-						<textarea name="" id="announce" class="hall-form-input"></textarea>
+						<textarea id="announce" class="hall-form-input" name="declaration"></textarea>
 						<button class="hall-back-btn" type="reset">↺</button>
 						<button class="hall-submit-btn" type="submit">ok</button>
 					</form>

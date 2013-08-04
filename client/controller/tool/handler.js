@@ -103,11 +103,13 @@ win.VerifyHadnler = {
 			Cookie.set("gender",info.gender);
 			console.log(document.cookie);
 			Meteor.Router.to("/game-hall");
+		},
+		err_cb = function(){
+			//later
 		};
 		win.db.insertUser(info,cb);
 	}
 };
-
 function verify(obj,length,text,baseClass,addClass){
 	var notice = $("#notice");
 	var tips = $("#tips");
@@ -120,3 +122,39 @@ function verify(obj,length,text,baseClass,addClass){
 		notice.css("display","none");
 	}
 }
+
+
+win.HallHandler = {
+	addRoom : function(e){
+		e.preventDefault();
+		var form = e.target,
+		info = {
+			name : form.name.value
+		},
+		cb = function(){
+			//Meteor.Router.to("");
+		},
+		err_cb = function(){
+			//deal with the problem
+		};
+		win.db.insertRoom(info,cb,err_cb);
+	},
+	updatePersonInfo : function(e){
+		e.preventDefault();
+		console.log(e.target);
+		var form = e.target,
+		info = {
+			real_name : form.real_name.value,
+			tel_phone : form.tel_phone.value,
+			moblie_phone : form.moblie_phone.value,
+			standard : form.standard.value,
+			declaration : form.declaration.value
+		},
+		cb = function(){
+
+		},
+		err_cb = function(){
+
+		};
+	}
+};

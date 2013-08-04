@@ -16,12 +16,24 @@ this.db = {
 			gender : info.gender,
 			profile : {
 				real_name : null,
-				phone_num : null,
+				mobile_phone: null,
+				tel_phone : null, 
 				standard : null,
 				declaration : null,
 				birthday : null
 			}
 		};
 		Users.insert(obj,cb);
+	},
+	insertRoom : function(info,cb,err_cb){
+		var obj = {
+			name : info.name,
+			owner : Cookie.get("name"),
+			num : 1
+		};
+		var _id = Rooms.insert(obj,cb);
+		if(!_id){
+			err_cb();
+		}
 	}
 };

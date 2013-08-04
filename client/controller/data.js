@@ -1,5 +1,10 @@
 if (Meteor.isClient) {
-  
+	Template.game_hall_boy.room = function(){
+		return Rooms.find({});
+	};
+	Template.game_hall_girl.room = function(){
+		return Rooms.find({});
+	};
 }
 
 
