@@ -8,7 +8,7 @@ this.db = {
 			err_cb();
 		}
 	},
-	insertUser : function(info,cb){
+	insertUser : function(info,cb,err_cb){
 		var obj = {
 			username : info.name,
 			account : info.account,
@@ -23,7 +23,10 @@ this.db = {
 				birthday : null
 			}
 		};
-		Users.insert(obj,cb);
+		var _id = Users.insert(obj,cb);
+	},
+	updateUser : function(info,cb,err_cb){
+		/*Users.update({})*/
 	},
 	insertRoom : function(info,cb,err_cb){
 		var obj = {

@@ -39,6 +39,7 @@ win.VerifyHadnler = {
 			password : form.password.value
 		},
 		cb = function(data){
+			Cookie.set("user_id",data._id);
 			Cookie.set("name",data.name);
 			Cookie.set("account",data.account);
 			Cookie.set("gender",data.gender);
@@ -97,17 +98,17 @@ win.VerifyHadnler = {
 			gender : gender
 		};
 		//insert
-		var cb = function(){
+		var cb = function(err,id){
+			Cookie.set("user_id",id);
 			Cookie.set("name",info.name);
 			Cookie.set("account",info.account);
 			Cookie.set("gender",info.gender);
-			console.log(document.cookie);
 			Meteor.Router.to("/game-hall");
 		},
 		err_cb = function(){
 			//later
 		};
-		win.db.insertUser(info,cb);
+		win.db.insertUser(info,cb,err_cb);
 	}
 };
 function verify(obj,length,text,baseClass,addClass){
@@ -141,7 +142,6 @@ win.HallHandler = {
 	},
 	updatePersonInfo : function(e){
 		e.preventDefault();
-		console.log(e.target);
 		var form = e.target,
 		info = {
 			real_name : form.real_name.value,
@@ -151,10 +151,11 @@ win.HallHandler = {
 			declaration : form.declaration.value
 		},
 		cb = function(){
-
+			//later
 		},
 		err_cb = function(){
-
+			//later
 		};
+		win.db.updateUser(info,cb,err_cb);
 	}
 };
