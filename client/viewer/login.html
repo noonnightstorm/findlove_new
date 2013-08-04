@@ -1,0 +1,30 @@
+<template name="login">
+	<div id="login-all-screen">
+		<div id="login-game-screen">
+			<form action="" id="login-form">
+				<div class="login-form-row login-all">
+					<label for="login-account" class="login-form-label">帐号:</label>
+					<input type="text" class="login-form-input" id="login-account" name="account">
+				</div>
+				<div class="login-form-row login-all">
+					<label for="login-pwd" class="login-form-label">密码:</label>
+					<input type="password" class="login-form-input" id="login-pwd"  name="password">
+				</div>
+				<div class="btn-row">
+					<a href="/register" class="login-btn login-all reigtser-btn" id="reigtser-btn">+</a>
+					<button type="submit" class="login-btn login-all" id="login-submit">ok</button>
+				</div>
+				<div class="login-notice" id="notice">
+					<span class="login-tips" id="tips"></span>
+					<div class="login-tail" id="tail"></div>
+				</div>
+			</form>
+			<div id="loading-notice">
+				<span>准备好没？游戏即将开始！</span>
+				<div id="loading">
+					<div id="login-plane" class="login-all"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

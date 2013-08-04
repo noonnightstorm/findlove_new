@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 方正喵呜体;
+    src: url(方正喵呜体.ttf);
+}
+*{
+	font-family:"方正喵呜体";
+	padding: 0;
+	margin: 0;
+	outline: 0;
+}
+#register-all-screen{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #fec68e;
+	background: -webkit-gradient(linear,left top,left bottom,
+		from(#fef3c7),color-stop(0.4,#fef3c7),to(#fec68e));
+	background: -moz-linear-gradient(top,#fef3c7,#fec68e);
+	overflow: hidden;
+}
+#register-game-screen{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -384px 0 0 -512px;
+	background-image: url(../image/register_all.png);
+	overflow: hidden;
+}
+#register-form{
+	width: 360px;
+	margin: 80px auto;
+}
+.register-form-row{
+	width: 100%;
+	margin-top: 40px;
+}
+.register-form-input{
+	width: 180px;
+	height: 43px;
+	padding: 0 10px;
+	background-color: rgba(0,0,0,0);
+	color: #ff3385;
+	font-size: 20px;
+	font-weight: 900;
+	border: none;
+	background-image: url(../image/pieces.png);
+	background-repeat: no-repeat;
+}
+.register-form-label{
+	padding-left: 15px;
+	letter-spacing: 15px;
+	display: inline-block;
+	font-size:22px;
+	font-weight: bolder;
+	color: #ff3385;
+	line-height: 43px;
+	text-align: right;
+}
+.comfirm-pwd{
+	padding: 0 15px 0 0;
+	letter-spacing: 0;
+}
+.register-btn{
+	width: 60px;
+	height: 40px;
+	float: right;
+	margin: 10px 30px 0 0;
+	border: none;
+	background: #ff3385;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 37px;
+	text-align: center;
+	line-height: 40px;
+	font-weight: 900;
+	color: #fff;
+	cursor: pointer;
+}
+.register-btn:hover{
+	background: #f5a;
+}
+.register-btn:active{
+	width: 56px;
+	height: 36px;
+	margin: 12px 32px 0 2px;
+	font-size: 33px;
+	line-height: 36px;
+}
+#registered{
+	width: 80px;
+	height: 40px;
+	margin: 20px 0 0 20px;
+	background: #ff3385;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	font-weight: 900;
+	color: #fff;
+}
+.register-notice{
+	height: 20px;
+	position: absolute;
+	padding: 3px 10px;
+	margin: -70px 0 0 130px;
+	background: #fc859a;
+	letter-spacing: 3px;
+	text-align: center;
+	line-height: 20px;
+	color: #fff;
+	-webkit-border-radius: 60px;
+	-moz-border-radius: 60px;
+	-o-border-radius: 60px;
+	border-radius: 60px;
+}
+.register-tail{
+	width: 0;
+	height: 0;
+	border: none;
+	margin: -1px 0;
+	border-top: 20px solid #fc859a;
+	border-right: 15px solid transparent;
+	-webkit-transform: rotate(25deg);
+	-moz-transform: rotate(25deg);
+	-o-transform: rotate(25deg);
+	transform: rotate(25deg);
+}
+#same{
+	display: none;
+	opacity: 0;
+}
+.radioBtn{
+	width: 14px;
+	height: 14px;
+	border: 2px solid #ff3585;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	cursor: pointer;
+}
+.selected{
+	width: 10px;
+	height: 10px;
+	margin: 2px;
+	background: #ff3585;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	display: none;
+}
+.form-radio{
+	display: none;
+}

@@ -1,0 +1,49 @@
+<template name="register">
+	<div id="register-all-screen">
+		<div id="register-game-screen">
+			<form action="" id="register-form">
+				<div class="register-form-row">
+					<label for="register-account" class="register-form-label">账户:</label>
+					<input type="text" class="register-form-input" id="register-account">
+				</div>
+				<div class="register-form-row">
+					<label for="register-name" class="register-form-label">姓名:</label>
+					<input type="text" class="register-form-input" id="register-name">
+				</div>
+				<div class="register-form-row">
+					<label for="register-pwd" class="register-form-label">密码:</label>
+					<input type="password" class="register-form-input" id="register-pwd">
+				</div>
+				<div class="register-form-row">
+					<label for="register-comfirm-pwd" class="register-form-label register-comfirm-pwd">确认密码:</label>
+					<input type="password" class="register-form-input" id="register-comfirm-pwd">
+				</div>
+				<div class="register-form-row" id="register-form-radio-row">
+					<span>
+					<label for="register-male" class="register-form-label radio-label">
+						<span>GG</span><div class="radioBtn"><div class="selected"></div></div>
+					</label>
+					<input type="radio" name="sex" class="form-radio" id="register-male" value="male">
+					</span>
+					<span>
+					<label for="register-female" class="register-form-label radio-label">
+						<span>MM</span><div class="radioBtn"><div class="selected"></div></div>
+					</label>
+					<input type="radio" name="sex" class="form-radio" id="register-female" value="female">
+					</span>
+				</div>
+				<div id="registered">
+					<a href="/">已注册</a>
+				</div>
+				<div class="register-btn-row">
+					<button class="register-btn" type="reset">↺</button>
+					<button class="register-btn" id="register-submit" type="submit">ok</button>
+				</div>
+				<div class="register-notice" id="notice">
+					<span id="tips"></span>
+					<div class="register-tail"></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</template>

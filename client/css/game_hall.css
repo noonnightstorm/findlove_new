@@ -1,0 +1,446 @@
+#hall-all-screen{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: -webkit-gradient(linear,right top,left bottom,
+		from(#fee0db),color-stop(0.6,#ffbcc6),to(#ffbcc6));
+	background: -moz-linear-gradient(top, #fee0db, #ffbcc6);
+	overflow: hidden;
+}
+#hall-game-screen{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -384px 0 0 -512px;
+	overflow: hidden;
+}
+
+.game-screen-girl{
+	background: url(../../img/girl_all.png);
+}
+.game-screen-boy{
+	background: url(../../img/boy_all.png);
+}
+
+.hall-all-image{
+	background: url(../../img/hall_pieces.png);
+}
+
+/*基本上所有的按钮*/
+.hall-enter-btn,.hall-back-btn,.hall-submit-btn,.try,.cancel{
+	width: 55px;
+	height: 35px;
+	float: right;
+	background: #ff3385;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 23px;
+	color: #fff;
+	cursor: pointer;
+}
+.hall-enter-btn:hover,.hall-back-btn:hover,.hall-submit-btn:hover,.try:hover,.cancel:hover{
+	opacity: 0.7;
+}
+.hall-enter-btn:active,.hall-back-btn:active,.hall-submit-btn:active,.try:active,.cancel:active{
+	width: 51px;
+	height: 31px;
+	margin: 2px;
+	font-size: 20px;
+}
+.hall-back-btn,.hall-submit-btn{
+	margin-right: 50px;
+	font-weight: 900;
+}
+.hall-back-btn:active,.hall-submit-btn:active{
+	margin-right: 52px;
+}
+.hall-scroll-btn{
+	width: 0;
+	height: 0;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -250px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	cursor: pointer;
+}
+.hall-scroll-up{
+	margin-top: 250px;
+	border-bottom: 20px solid rgba(255,51,133,0.6);
+}
+.hall-scroll-down{
+	margin-top: 280px;
+	border-top: 20px solid rgba(255,51,133,0.6);
+}
+
+/*游戏帮助*/
+#help{
+	width: 50px;
+	height: 125px;
+	position: absolute;
+	margin-top: -150px;
+	cursor: pointer;
+}
+.arrow-container{
+	width: 7px;
+	height: 100%;
+	float: left;
+	background: #82b8fc;
+	-webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	-o-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
+.hidden-arrow{
+	width: 0;
+	height: 0;
+	margin-top: 55px;
+	border-top: 3px solid transparent;
+	border-left: 6px solid #fff;
+	border-bottom: 3px solid transparent;
+}
+.help-btn{
+	width: 20px;
+	margin: 10px 0 0 7px;
+	padding: 5px;
+	background: #82b8fc;
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	-o-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+	border-left: 1px solid #fff;
+	color: #fff;
+	font-size: 20px;
+}
+.help-btn:hover{
+	background: #acf;
+}
+.sub-help{
+	width: 300px;
+	height: 500px;
+	float: left;
+	margin-left: -300px;
+	background: #82b8fc;
+}
+
+/*房间列表*/
+.all-room{
+	width: 715px;
+	height: 170px;
+	padding-left: 170px;
+	margin: 9px 0 0 110px;
+	background: rgba(255,253,222,0.7);
+	border: 3px solid #ffc1c7;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.all-room-logo{
+	width: 175px;
+	height: 220px;
+	position: absolute;
+	margin: -25px 0 0 -170px;
+	-webkit-transform: scale(0.8,0.7);
+	-moz-transform: scale(0.8,0.7);
+	-o-transform: scale(0.8,0.7);
+	transform: scale(0.8,0.7);
+	background-position: -95px 0;
+	opacity: 0.7;
+}
+.hall-room{
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin: 10px 15px 10px 0;
+	background: #fff;
+	border: 5px solid #fdccc5;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 20px #fdccc5;
+	-moz-box-shadow: 0 0 20px #fdccc5;
+	-o-box-shadow: 0 0 20px #fdccc5;
+	box-shadow: 0 0 20px #fdccc5;
+	color: #ff3385;
+	font-size: 22px;
+	font-weight: 900;
+	line-height: 27px;
+	display: inline-block;
+}
+#hall-room-up{
+	margin: -330px 0 0 420px;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 40px solid #fff;
+}
+#hall-room-down{
+	margin: -280px 0 0 420px;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 40px solid #fff;
+}
+
+
+/*导航栏*/
+.nav{
+	width: 235px;
+	height: 560px;
+	margin: 15px 0 0 10px;
+	float: left;
+}
+#hall-nav-arrow{
+	width: 0;
+	height: 0;
+	position: absolute;
+	margin: 50px 0 0 235px;
+	border-top: 20px solid #fff;
+	border-right: 30px solid #fff;
+	border-bottom: 20px solid #fff;
+	border-left: 30px solid #fff;
+	border-color:transparent transparent transparent #fff;
+	display: none;
+	opacity: 0;
+}
+.nav-btn,.exit{
+	width: 220px;
+	height: 65px;
+	margin: 40px auto 0 auto;
+	background: #fc8293;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	font-size: 25px;
+	color: #fff;
+	cursor: pointer;
+}
+.nav-btn:hover,.exit:hover{
+	height: 60px;
+	border-bottom: 5px solid #fff;
+}
+.nav-logo{
+	width: 90px;
+	height: 90px;
+	margin: -48px -15px 0 10px;
+	display: inline-block;
+}
+.nav-logo1{
+	background-position: 0 0;
+}
+.nav-logo2{
+	background-position: 0 -95px;
+}
+.nav-logo3{
+	background-position: 0 -190px;
+}
+.nav-logo4{
+	background-position: 0 -285px;
+}
+.nav-logo5{
+	background-position: 0 -380px;
+}
+
+/*大框框共用样式*/
+.main{
+	width: 521px;
+	height: 566px;
+	margin: 12px 0 0 247px;
+}
+.content{
+	width: 515px;
+	height: 555px;
+	display: none;
+	overflow: hidden;
+	background: rgba(255,253,227,0.6);
+	border: 3px solid #fd9db0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	opacity: 0;
+	display: none;
+}
+.title{
+	width: 210px;
+	height: 60px;
+	margin: 40px auto 0 auto;
+	background: #fd98ad;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 60px;
+	font-weight: 900;
+	font-size: 30px;
+	color: #fff;
+}
+
+/*不能创建房间*/
+#sign-outer{
+	width: 200px;
+	height: 200px;
+	margin: 100px auto 0 auto;
+	border: 10px solid #ff518a;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+}
+#sign-inner{
+	width: 10px;
+	height: 100%;
+	margin: 0 auto;
+	background: #ff518a;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.notice{
+	width: 350px;
+	height: 50px;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 50px;
+	color: #ff518a;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+/*创建房间*/
+.castle{
+	width: 175px;
+	height: 220px;
+	margin: 10px 50px;
+	background-position: -95px 0;
+}
+#new-room-form{
+	float: right;
+	margin: -150px 0;
+	line-height: 200px;
+}
+.new-room-input{
+	width: 182px;
+	height: 43px;
+	padding: 0 10px;
+	margin-right: 50px;
+	font-size: 25px;
+	background-position: -95px -225px;
+	color: #999;
+	-webkit-box-shadow: 3px 3px 5px #aaa;
+	-moz-box-shadow: 3px 3px 5px #aaa;
+	-o-box-shadow: 3px 3px 5px #aaa;
+	box-shadow: 3px 3px 5px #aaa;
+}
+
+/*道具商城*/
+.item{
+	width: 415px;
+	height: 145px;
+	margin: 40px auto;
+	border: 5px solid #ff67bc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 10px #ff67bc;
+	-moz-box-shadow: 0 0 10px #ff67bc;
+	-o-box-shadow: 0 0 10px #ff67bc;
+	box-shadow: 0 0 10px #ff67bc;
+}
+.item-logo{
+	width: 65px;
+	height: 100px;
+	margin: 22px;
+	float: left;
+}
+.item-logo1{
+	background-position: -95px -273px;
+}
+.item-logo2{
+	background-position: -95px -378px;
+}
+.item-info{
+	width: 315px;
+	height: 125px;
+	padding: 10px;
+	margin-left: 80px;
+	font-size: 20px;
+	line-height: 30px;
+}
+.item-info h2{
+	text-align: center;
+}
+.star{
+	font-size: 30px;
+	color: #ff89aa;
+	font-weight: 900;
+}
+.cancel{
+	display: none;
+}
+
+/*广播*/
+.broadcast,.no-broadcast{
+	width: 85%;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 30px;
+	font-size: 25px;
+	color: #ff3385;
+}
+.no-broadcast{
+	font-size: 35px;
+	font-weight: bolder;
+	display: none;
+}
+.broadcast{
+	height: 420px;
+	overflow: hidden;
+}
+.broadcase ul{
+	padding-bottom: 100px;
+}
+
+/*我的名片*/
+.info-box{
+	width: 85%;
+	height: 500px;
+	margin:  20px auto;
+	padding-bottom: 80px;
+	color: #ff3385;
+	font-size: 30px;
+	line-height: 60px;
+	overflow: hidden;
+}
+.hall-form-input{
+	width: 250px;
+	height: 60px;
+	margin-bottom: 40px;
+	padding: 0 10px;
+	border: 3px solid #ffdbbc;
+	font-size: 30px;
+	color: #ff3385;
+	-webkit-box-shadow: 0 0 10px #ffdbbc;
+	-moz-box-shadow: 0 0 10px #ffdbbc;
+	-o-box-shadow: 0 0 10px #ffdbbc;
+	box-shadow: 0 0 10px #ffdbbc;
+}
+.info-box textarea{
+	width: 250px;
+	height: 150px;
+	margin: -50px 0 0 131px;
+	padding: 10px;
+	font-size: 20px;
+}
