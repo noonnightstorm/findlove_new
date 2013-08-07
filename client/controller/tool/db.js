@@ -63,6 +63,11 @@ this.db = {
 		}},true,cb);
 	},
 	initController : function(info,cb,err_cb){
+		var controller = {
+			room_id : info.r_id,
+			users : [info.u_id]
+		};
+		Controllers.insert(controller);
 	},
 	updateControllerNum : function(info,cb,err_cb){
 		cb();

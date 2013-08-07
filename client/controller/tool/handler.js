@@ -157,7 +157,7 @@ win.RoomHandler = {
 		cb = function(id){
 			var c_info = {
 				r_id : id,
-				u_id : Cookie.get("user_id");
+				u_id : Cookie.get("user_id")
 			},
 			c_cb = function(){
 				Meteor.Router.to("/game");

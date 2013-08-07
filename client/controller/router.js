@@ -10,10 +10,18 @@ Meteor.Router.add({
     		return "game_hall_girl";
     	}
     	else{
-    		Meteor.Router.to("/");
+    		return "login";
     	}
     },
     '/game' : function(){
-        return "game";
+        var user_id = Cookie.get("user_id");
+        var account = Cookie.get("account");
+        var name = Cookie.get("name");
+        if(user_id && account &&name){
+            return "game";
+        }
+        else{
+            return "login";
+        }
     }
 });
