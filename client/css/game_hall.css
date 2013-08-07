@@ -31,6 +31,35 @@
 }
 
 /*基本上所有的按钮*/
+.hall-all-btn{
+	width: 55px;
+	height: 35px;
+	float: right;
+	background: #ff3385;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	font-size: 23px;
+	color: #fff;
+	cursor: pointer;
+	opacity: 0.6;
+	-webkit-transition: opacity 0.4s;
+	-moz-transition: opacity 0.4s;
+	-o-transition: opacity 0.4s;
+	transition: opacity 0.4s;
+}
+.hall-all-btn:hover{
+	opacity: 1;
+}
+.hall-all-btn:active{
+	width: 51px;
+	height: 31px;
+	margin: 2px;
+	font-size: 20px;
+}
+
+/*基本上所有的按钮*/
 .hall-enter-btn,.hall-back-btn,.hall-submit-btn,.try,.cancel{
 	width: 55px;
 	height: 35px;
@@ -310,25 +339,11 @@
 }
 
 /*不能创建房间*/
-#sign-outer{
-	width: 200px;
-	height: 200px;
-	margin: 100px auto 0 auto;
-	border: 10px solid #ff518a;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	border-radius: 50%;
-}
-#sign-inner{
-	width: 10px;
-	height: 100%;
-	margin: 0 auto;
-	background: #ff518a;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
+#cannot-create-sign{
+	width: 175px;
+	height: 220px;
+	margin: 100px auto 20px auto;
+	background-position: -95px 0;
 }
 .notice{
 	width: 350px;
@@ -466,4 +481,105 @@
 	margin: -50px 0 0 131px;
 	padding: 10px;
 	font-size: 20px;
+}
+.mv-hint{
+	width: 250px;
+	margin: -10px 0 30px 131px;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 30px;
+}
+#birthyear,#birthmonth,#birthday{
+	display: inline-block;
+	text-align: center;
+}
+#birthyear{
+	width: 55px;
+}
+#birthmonth,#birthday{
+	width: 40px;
+}
+.hall-hyphen{
+	font-family: Tahoma;
+}
+
+/*开始时的教程*/
+.hall-tutorial{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.hall-tutorial-box{
+	width: 310px;
+	position: absolute;
+	padding: 20px;
+	border: 2px solid #fd9fb5;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-o-border-radius: 5px; 
+	border-radius: 5px; 
+	background: #fff3d9;
+	opacity: 0;
+	display: none;
+}
+.hall-tutorial-box0{
+	margin: 480px 0 0 250px;
+}
+.hall-tutorial-box1{
+	width: 380px;
+	margin: 230px 0 0 250px;
+}
+.hall-tutorial-box2{
+	width: 380px;
+	margin: 200px 0 0 250px;
+}
+.hall-tutorial-box3{
+	width: 380px;
+	margin: 150px 0 0 350px;
+}
+.tutorial-box-tail-border{
+	width: 0;
+	height: 0;
+	margin: -25px 0 0 -45px;
+	border-bottom: 25px solid #fd9fb5; 
+	border-left: 25px solid transparent;
+}
+.tutorial-box-tail{
+	width: 0;
+	height: 0;
+	position: absolute;
+	margin: 2px 0 0 -21px;
+	border-bottom: 21px solid #fff3d9; 
+	border-left: 21px solid transparent;
+}
+.hall-tutorial-box2 .tutorial-box-tail-border,.hall-tutorial-box3 .tutorial-box-tail-border{
+	margin: -60px 0 0 -45px;
+	border-bottom: none;
+	border-top: 25px solid #fd9fb5; 
+}
+.hall-tutorial-box2 .tutorial-box-tail,.hall-tutorial-box3 .tutorial-box-tail{
+	margin: -23px 0 0 -21px;
+	border-bottom: none;
+	border-top: 21px solid #fff3d9; 
+}
+.tutorial-content-box{
+	font-size: 25px;
+	color: #ff3385;
+	line-height: 40px;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+#tutorial-next-btn{
+	width: 80px;
+}
+.tutorial-next-btn:active{
+	width: 76px;
+}
+.hall-tutorial-box2 .tutorial-next-btn,.hall-tutorial-box3 .tutorial-next-btn{
+	width: 120px;
+}
+.hall-tutorial-box2 .tutorial-next-btn:active,.hall-tutorial-box3 .tutorial-next-btn:active{
+	width: 116px;
 }

@@ -126,20 +126,6 @@ function verify(obj,length,text,baseClass,addClass){
 
 
 win.HallHandler = {
-	addRoom : function(e){
-		e.preventDefault();
-		var form = e.target,
-		info = {
-			name : form.name.value
-		},
-		cb = function(){
-			//Meteor.Router.to("");
-		},
-		err_cb = function(){
-			//deal with the problem
-		};
-		win.db.insertRoom(info,cb,err_cb);
-	},
 	updatePersonInfo : function(e){
 		e.preventDefault();
 		var form = e.target,
@@ -147,8 +133,10 @@ win.HallHandler = {
 			real_name : form.real_name.value,
 			tel_phone : form.tel_phone.value,
 			moblie_phone : form.moblie_phone.value,
+			birthday : form.birthyear.value+"-"+form.birthmonth.value+"-"+form.birthday.value,
 			standard : form.standard.value,
-			declaration : form.declaration.value
+			declaration : form.declaration.value,
+			mv_url : form.mv.value || ""
 		},
 		cb = function(){
 			//later
@@ -157,5 +145,54 @@ win.HallHandler = {
 			//later
 		};
 		win.db.updateUser(info,cb,err_cb);
+	}
+};
+win.RoomHandler = {
+	addRoom : function(e){
+		e.preventDefault();
+		var form = e.target,
+		info = {
+			name : form.name.value
+		},
+		cb = function(id){
+			var c_info = {
+				r_id : id,
+				u_id : Cookie.get("user_id");
+			},
+			c_cb = function(){
+				Meteor.Router.to("/game");
+			},
+			c_err_cb = function(){
+				//later
+			};
+			win.db.initController(c_info,c_cb,c_err_cb);
+		},
+		err_cb = function(){
+			//deal with the problem
+		};
+		win.db.insertRoom(info,cb,err_cb);
+	},
+	enterRoom : function(e){
+		var info = {
+			r_id : $(e.target).attr("r_id")
+		},
+		cb = function(){
+			console.log("callback");
+			var c_info = {
+				r_id : info.r_id,
+				u_id : Cookie.get("user_id")
+			},
+			c_cb = function(){
+				Meteor.Router.to("/game");
+			},
+			c_err_cb = function(){
+				//later
+			};
+			win.db.updateControllerNum(c_info,c_cb,c_err_cb);
+		},
+		err_cb = function(){
+			//later
+		};
+		win.db.updateRoomNum(info,cb,err_cb);
 	}
 };

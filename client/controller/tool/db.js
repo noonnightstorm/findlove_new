@@ -15,18 +15,33 @@ this.db = {
 			password : info.pwd,
 			gender : info.gender,
 			profile : {
-				real_name : null,
-				mobile_phone: null,
-				tel_phone : null, 
-				standard : null,
-				declaration : null,
-				birthday : null
+				real_name : "",
+				mobile_phone: "",
+				tel_phone : "", 
+				birthday : "",
+				standard : "",
+				declaration : "",
+				birthday : "",
+				mv_url : ""
 			}
 		};
 		var _id = Users.insert(obj,cb);
 	},
 	updateUser : function(info,cb,err_cb){
-		/*Users.update({})*/
+		Users.update({_id:Cookie.get("user_id")},
+		{
+			$set : {
+				profile : {
+					real_name : info.real_name,
+					mobile_phone : info.mobile_phone,
+					tel_phone : info.tel_phone,
+					birthday : info.birthday,
+					standard : info.standard,
+					declaration : info.declaration,
+					mv_url : info.mv_url
+				}
+			}
+		});
 	},
 	insertRoom : function(info,cb,err_cb){
 		var obj = {
@@ -38,5 +53,18 @@ this.db = {
 		if(!_id){
 			err_cb();
 		}
+		else{
+			cb(_id);
+		}
+	},
+	updateRoomNum : function(info,cb,err_cb){
+		Rooms.update({_id:info.r_id},{$inc:{
+			num : 1
+		}},true,cb);
+	},
+	initController : function(info,cb,err_cb){
+	},
+	updateControllerNum : function(info,cb,err_cb){
+		cb();
 	}
 };

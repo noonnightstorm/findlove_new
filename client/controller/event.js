@@ -16,7 +16,12 @@ if (Meteor.isClient) {
 	Template.game_hall_boy.rendered = win.Effect.gameHall.init;
 	Template.game_hall_girl.rendered = win.Effect.gameHall.init;
 	Template.game_hall_boy.events({
-		"submit #new-room-form" : win.HallHandler.addRoom,
-		"submit #personal-info-form" : win.HallHandler.updatePersonInfo
+		"submit #new-room-form" : win.RoomHandler.addRoom,
+		"submit #personal-info-form" : win.HallHandler.updatePersonInfo,
+		"click .hall-enter-btn" : win.RoomHandler.enterRoom
+	});
+	Template.game_hall_girl.events({
+		"submit #personal-info-form" : win.HallHandler.updatePersonInfo,
+		"click .hall-enter-btn" : win.RoomHandler.enterRoom
 	});
 }

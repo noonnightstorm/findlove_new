@@ -1,0 +1,599 @@
+@font-face {
+    font-family: 方正喵呜体;
+    src: url(方正喵呜体.ttf);
+}
+*{
+	font-family:"方正喵呜体";
+	padding: 0;
+	margin: 0;
+	outline: 0;
+	border: none;
+}
+#game-all-screen{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #feb6bd;
+	background: -webkit-gradient(linear,left top,left bottom,
+		from(#fedfdc),color-stop(0.6,#febfc3),to(#feb6bd));
+	background: -moz-linear-gradient(top, #fedfdc, #feb6bd);
+	overflow: hidden;
+}
+#game-game-screen{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -384px 0 0 -512px;
+	background-image: url(../image/game_all.png);
+	overflow: hidden;
+}
+.game-all-img{
+	background: url(../image/game_pieces.png);
+}
+.game-all-btn{
+	background: #ff3385;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+	text-align: center;
+	font-weight: 900;
+	color: #fff;
+	cursor: pointer;
+}
+.game-all-btn:hover{
+	background: #f5a;
+}
+
+/*全屏提示框*/
+#game-fullscreen-notice{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+	/*display: none;*/
+}
+.game-notice{
+	width: 386px;
+	height: 421px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -213px;
+	margin-left: -195px;
+	background: #fbf6d8;
+	border: 2px solid #fc90ac;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	text-align: center;
+	color: #ff3385;
+}
+.game-notice h1{
+	font-size: 45px;
+	line-height: 60px;
+}
+.game-notice-img{
+	width: 100%;
+	height: 225px;
+}
+.game-success-notice .game-notice-img{
+	background-position: 0 -210px;
+}
+.game-fail-notice .game-notice-img{
+	background-position: 0 -891px;
+}
+.game-alert-notice .game-notice-img-boy{
+	background-position: 0 -437px;
+}
+.game-alert-notice .game-notice-img-girl{
+	background-position: 0 -664px;
+}
+.game-notice-text{
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+}
+.game-fail-notice .game-notice-text,.game-alert-notice .game-notice-text{
+	font-size: 22px;
+	line-height: 70px;
+}
+.game-notice-back{
+	width: 50px;
+	height: 35px;
+	margin: -10px 0 0 300px;
+	font-size: 30px;
+	line-height: 35px;
+}
+.game-notice-back:active{
+	width: 46px;
+	height: 31px;
+	margin: -8px 0 0 302px;
+	font-size: 26px;
+	line-height: 31px;
+}
+
+/*输入框*/
+#game-input-box{
+	width: 370px;
+	height: 250px;
+	position: absolute;
+	margin: 40px 0 0 10px;
+	background: rgba(253,199,205,0.7);
+	text-align: center;
+}
+#game-input{
+	width: 300px;
+	height: 206px;
+	margin: 2px 0;
+	padding: 10px;
+	background: #fae1e2;
+	border: 10px solid #feadb5;
+	font-size: 30px;
+	color: #ff3385;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-transition: background 0.5s;
+	-moz-transition: background 0.5s;
+	-o-transition: background 0.5s;
+	transition: background 0.5s;
+}
+#game-input:focus{
+	background: #fff;
+}
+.game-submit-btn{
+	width: 60px;
+	height: 45px;
+	position: absolute;
+	margin: 210px 0 0 -50px;
+	line-height: 45px;
+	line-height: 45px;
+	font-size: 40px;
+	opacity: 0.7;
+}
+.game-submit-btn:hover{
+	opacity: 1;
+}
+.game-submit-btn:active{
+	width: 56px;
+	height: 41px;
+	font-size: 36px;
+	line-height: 41px;
+	margin: 212px 0 0 -48px;
+}
+
+/*房间编号*/
+#game-room-title{
+	width: 175px;
+	height: 50px;
+	float: right;
+	margin: 50px 100px 0 0;
+	background: #ffecef;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+	text-align: center;
+	font-size: 40px;
+	line-height: 50px;
+	font-weight: bold;
+	color: #ff3385;
+}
+/*开始按钮*/
+.game-start-btn{
+	width: 125px;
+	height: 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -70px 0 0 -63px;
+	font-size: 30px;
+	font-weight: normal;
+	display: none;
+}
+.game-start-btn:active{
+	width: 121px;
+	height: 36px;
+	margin: -68px 0 0 -61px;
+	font-size: 28px;
+}
+/*退出按钮*/
+.game-quit-btn{
+	width: 130px;
+	height: 40px;
+	position: absolute;
+	right: 10px;
+	padding-left: 20px;
+	border: 10px;
+	background: #fc8293;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	border-bottom: 5px solid #fff;
+	line-height: 45px;
+	font-size: 30px;
+	font-weight: bolder;
+	color: #fff;
+	letter-spacing: 5px;
+	cursor: pointer;
+}
+#game-plane{
+	width: 75px;
+	height: 75px;
+	float: right;
+	margin: -72px 0 0;
+	background-position: 0 -1420px;
+}
+.game-quit-btn:hover{
+	opacity: 0.8;
+}
+
+/*最底下的提示*/
+.game-bottom-tips{
+	position: absolute;
+	bottom: 60px;
+	left: 10px;
+	color: #fff;
+	font-size: 20px;
+}
+
+/*男生*/
+.game-boy-all{
+	width: 225px;
+	height: 270px;
+	margin: 50px auto 0 auto;
+}
+.game-boy-circle{
+	width: 205px;
+	height: 205px;
+	background: #fff;
+	border: 10px solid #fdcec6;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.game-boy-head{
+	width: 205px;
+	height: 205px;
+	background-position: 0 0;
+}
+.game-boy-name{
+	width: 90px;
+	height: 30px;
+	margin: -30px auto 0 auto;
+	background: #ffe6e2;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 25px;
+	font-weight: bolder;
+	color: #ff3385;
+}
+/*女生*/
+.game-girl-all{
+	width: 180px;
+	height: 250px;
+	display: inline-block;
+	margin: 100px 10px 0 10px;
+}
+.game-girl-circle{
+	width: 166px;
+	height: 166px;
+	background: #fff;
+	border: 7px solid #fdcec6;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.game-girl-head{
+	width: 166px;
+	height: 166px;
+	background-position: -210px 0;
+}
+.game-girl-name{
+	width: 70px;
+	height: 25px;
+	margin: -18px auto 0 auto;
+	background: #ffe6e2;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 25px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #ff3385;
+}
+/*对话框*/
+.game-dialog{
+	width: 361px;
+	height: 186px;
+	position: absolute;
+	background: #fffddb;
+	border: 2px solid #fda1b1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	opacity: 0.8;
+}
+.game-dialog-text{
+	width: 331px;
+	height: 176px;
+	padding: 5px 15px;
+	color: #ff3385;
+	font-size: 25px;
+	overflow: hidden;
+}
+.game-boy-dialog{
+	margin: -100px 0 0 200px;
+	display: none;
+}
+.game-boy-dialog .dialog-tail-border{
+	width: 0;
+    height: 0;
+    margin: -120px 0 0 -36px;
+    border-top: 24px solid #fda1b1; 
+    border-left: 36px solid transparent;
+}
+.game-boy-dialog .dialog-tail{
+	width: 0;
+    height: 0;
+    margin: -22px 0 0 -30px;
+    border-top: 20px solid #fffddb; 
+    border-left: 30px solid transparent;
+}
+.game-girl-dialog{
+	margin: -300px 0 0 150px;
+	display: none;
+}
+.game-girl-dialog4,.game-girl-dialog5{
+	margin: -300px 0 0 -370px;
+}
+.game-girl-dialog1{
+	display: block;
+}
+.game-girl-dialog .dialog-tail-border{
+	width: 0;
+    height: 0;
+    margin: -100px 0 0 -36px;
+    border-bottom: 24px solid #fda1b1; 
+    border-left: 36px solid transparent;
+}
+.game-girl-dialog .dialog-tail{
+	width: 0;
+    height: 0;
+    position: absolute;
+    margin: 2px 0 0 -30px;
+    border-bottom: 20px solid #fffddb; 
+    border-left: 30px solid transparent;
+}
+.game-girl-dialog4 .dialog-tail-border,.game-girl-dialog5 .dialog-tail-border{
+	width: 0;
+    height: 0;
+    margin: -100px 0 0 361px;
+    border-bottom: 24px solid #fda1b1; 
+    border-left: none;
+    border-right: 36px solid transparent;
+}
+.game-girl-dialog4 .dialog-tail,.game-girl-dialog5 .dialog-tail{
+	width: 0;
+    height: 0;
+    position: absolute;
+    margin: 2px 0;
+    border-bottom: 20px solid #fffddb; 
+    border-left: none;
+    border-right: 30px solid transparent;
+}
+/*上下箭头*/
+.game-scroll-btn-up{
+	width: 0;
+	height: 0;
+	position: absolute;
+	margin: 120px 0 0 330px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 20px solid rgba(255,51,133,0.7);
+	cursor: pointer;
+}
+.game-scroll-btn-down{
+	width: 0;
+	height: 0;
+	position: absolute;
+	margin: 150px 0 0 330px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 20px solid rgba(255,51,133,0.7);
+	cursor: pointer;
+}
+.game-scroll-btn-up:hover{
+	border-bottom: 20px solid #ff3385;
+}
+.game-scroll-btn-down:hover{
+	border-top: 20px solid #ff3385;
+}
+.light-bulb{
+	width: 45px;
+	height: 45px;
+	margin: 5px auto;
+	background-position: 0 -1118px;
+	cursor: pointer;
+}
+.light-bulb-on{
+	width: 45px;
+	height: 45px;
+	background-position: 0 -1165px;
+	opacity: 0;
+}
+.name-card-icon{
+	width: 55px;
+	height: 35px;
+	float: right;
+	margin: -42px 10px 0 0;
+	background-position: 0 -1249px;
+	cursor: pointer;
+	display: none;
+}
+.name-card-icon-boy{
+	margin: -15px 0 0;
+	background-position: 0 -1212px;
+}
+.prop-btn{
+	width: 50px;
+	height: 25px;
+	float: right;
+	margin: -42px 10px 0 0;
+	font-size: 20px;
+	cursor: pointer;
+}
+.prop-btn-boy{
+	margin: -15px 0 0;
+}
+.prop-btn:active{
+	width: 46px;
+	height: 21px;
+	font-size: 18px;
+	margin: -40px 12px 0 0;
+}
+.prop-btn-boy:active{
+	margin: -13px 2px 0 0;
+}
+.prop-box{
+	width: 285px;
+	height: 75px;
+	position: absolute;
+	margin: -60px 0 0 120px;
+	background: #ffeadb;
+	border: 2px solid #ff3385;
+	display: none;
+	opacity: 0;
+}
+.prop-box-boy{
+	margin: -10px 0 0 170px;
+}
+.prop-box-tail-border{
+	width: 0;
+	height: 0;
+	margin: -21px 0 0 30px;
+	border-bottom: 21px solid #ff3385; 
+	border-right: 21px solid transparent; 
+}
+.prop-box-tail{
+	width: 0;
+	height: 0;
+	position: absolute;
+	margin: 5px 0 0 2px;
+	border-bottom: 16px solid #ffeadb; 
+	border-right: 16px solid transparent; 
+}
+.prop-box4,.prop-box5{
+	margin: -60px 0 0 -220px;
+}
+.prop-box4 .prop-box-tail-border,.prop-box5 .prop-box-tail-border{
+	margin: -21px 0 0 230px;
+	border-right: none;
+	border-left: 21px solid transparent; 
+}
+.prop-box4 .prop-box-tail,.prop-box5 .prop-box-tail{
+	margin: 5px 0 0 -18px;
+	border-right: none;
+	border-left: 16px solid transparent; 
+}
+.game-scroll-btn-left{
+	width: 0;
+	height: 0;
+	float: right;
+	margin: 10px 40px 5px 0;
+	border-top: 10px solid transparent;
+	border-right: 20px solid rgba(255,51,133,0.7);
+	border-bottom: 10px solid transparent;
+	cursor: pointer;
+}
+.game-scroll-btn-left:hover{
+	border-right: 20px solid #ff3385;
+}
+.game-scroll-btn-right{
+	width: 0;
+	height: 0;
+	float: right;
+	margin: -25px 10px 5px 0;
+	border-top: 10px solid transparent;
+	border-left: 20px solid rgba(255,51,133,0.7);
+	border-bottom: 10px solid transparent;
+	cursor: pointer;
+}
+.game-scroll-btn-right:hover{
+	border-left: 20px solid #ff3385;
+}
+.hide-prop-btn{
+	width: 40px;
+	height: 20px;
+	margin: 10px 15px 0 0;
+	float: right;
+	font-size: 20px;
+	font-weight: bolder;
+}
+.hide-prop-btn:active{
+	width: 36px;
+	height: 16px;
+	margin: 12px 17px 0 0;
+	font-size: 16px;
+}
+.prop-container-outer{
+	width: 210px;
+	height: 100px;
+	margin: 5px;
+	float: left;
+	overflow: hidden;
+}
+.prop-item{
+	width: 85px;
+	height: 65px;
+	margin: 0 10px;
+	float: left;
+	cursor: pointer;
+}
+.prop-lock{
+	background-position: 0 -1286px;
+}
+.prop-random{
+	background-position: 0 -1353px;
+}
+.prop-item-hint{
+	margin: 30px 0 0 0;
+	background: #fff;
+	color: #ff3385;
+	font-size: 15px;
+	text-align: center;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+.prop-item:hover .prop-item-hint{
+	opacity: 1;
+}

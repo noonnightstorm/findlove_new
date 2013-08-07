@@ -19,7 +19,7 @@
 						<span class="hall-room-label">人数：{{num}}</span>
 						<span class="hall-room-info"></span>
 					</p>
-					<button class="hall-enter-btn">进入</button>
+					<button class="hall-enter-btn hall-all-btn" r_id="{{_id}}">进入</button>
 				</div>
 				{{/each}}
 			</div>
@@ -59,7 +59,7 @@
 					<div class="create">
 						<div class="title">建立房间</div>
 						<div class="castle hall-all-image"></div>
-						<form action="" id="new-room-form">
+						<form id="new-room-form">
 							<input type="text" class="new-room-input  hall-all-image" placeholder="房间名字" name="name"><br>
 							<button class="hall-back-btn">←</button>
 							<button class="hall-submit-btn">ok</button>
@@ -98,35 +98,6 @@
 					<div class="broadcast">
 						<ul>
 							<li>热烈祝贺1房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺2房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺3房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺4房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺5房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺6房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺7房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺8房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺9房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺10房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺11房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺12房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺13房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺14房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺15房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺16房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺17房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺18房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺19房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺20房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺21房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺1房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺2房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺3房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺4房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺5房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺6房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺7房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺8房间的Mary和Lucy牵手成功！</li>
-							<li>热烈祝贺9房间的Mary和Lucy牵手成功！</li>
 						</ul>
 						<div class="hall-scroll-btn hall-scroll-up"></div>
 						<div class="hall-scroll-btn hall-scroll-down"></div>
@@ -135,24 +106,50 @@
 				<div class="content">
 					<div class="info-box">
 					<form action="" id="personal-info-form">
-						<label for="real-name" class="form-label">真实姓名</label>
-						<input type="text" id="real-name" class="hall-form-input" name="real_name"><br>
-						<label for="telephone" class="form-label">固定电话</label>
-						<input type="text" id="telephone" class="hall-form-input" name="tel_phone"><br>
-						<label for="mobile" class="form-label">手机号码</label>
-						<input type="text" id="mobile" class="hall-form-input" name="moblie_phone"><br>
-						<label for="standard" class="form-label">择偶标准</label><br>
-						<textarea name="" id="standard" class="hall-form-input" name="standard"></textarea>
-						<label for="announce" class="form-label">爱情宣言</label><br>
-						<textarea id="announce" class="hall-form-input" name="declaration"></textarea>
-						<button class="hall-back-btn" type="reset">↺</button>
-						<button class="hall-submit-btn" type="submit">ok</button>
+						<div>
+							<label for="real-name" class="form-label">真实姓名</label>
+							<input type="text" id="real-name" class="hall-form-input" name="real_name" value="{{myself.profile.real_name}}">
+						</div>
+						<div>
+							<label for="telephone" class="form-label">固定电话</label>
+							<input type="text" id="telephone" class="hall-form-input" name="tel_phone" value="{{myself.profile.tel_phone}}">
+						</div>
+						<div>
+							<label for="mobile" class="form-label">手机号码</label>
+							<input type="text" id="mobile" class="hall-form-input" name="moblie_phone" value="{{myself.profile.moblie_phone}}">
+						</div>
+						<div>
+							<label for="birthday" class="hall-form-label">
+								出生年月
+							</label>
+							<input type="text" id="birthyear" class="hall-form-input" name="birthyear"><span class="hall-hyphen"> -</span>
+							<input type="text" id="birthmonth" class="hall-form-input" name="birthmonth"><span class="hall-hyphen"> -</span>
+							<input type="text" id="birthday" class="hall-form-input" name="birthday">
+						</div>
+						<div>
+							<label for="standard" class="form-label">择偶标准</label><br>
+							<textarea name="" id="standard" class="hall-form-input" name="standard" value="{{myself.profile.standard}}"></textarea>
+						</div>
+						<div>
+							<label for="announce" class="form-label">爱情宣言</label><br>
+							<textarea id="announce" class="hall-form-input" name="declaration" value="{{myself.profile.declaration}}"></textarea>
+						</div>
+						<div>
+							<label for="mv" class="hall-form-label">个人mv</label>
+							<textarea name="" id="mv" class="hall-form-input" placeholder="长度不超过5分钟（可以不上传，但是有MV的男生更加受女孩子青睐哦！）" name="mv"></textarea>
+							<div class="mv-hint">（只需将个人mv上传到优酷，复制网址粘贴到上面的输入框即可！）</div>
+						</div>
+						<div>
+							<button class="hall-back-btn" type="reset">↺</button>
+							<button class="hall-submit-btn" type="submit">ok</button>
+						</div>
 					</form>
 					<div class="hall-scroll-btn hall-scroll-up"></div>
 					<div class="hall-scroll-btn hall-scroll-down"></div>
 					</div>
 				</div>
 			</div>
+			<div class="hall-tutorial"></div>
 		</div>
 	</div>
 </template>

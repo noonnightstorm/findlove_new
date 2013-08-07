@@ -12,5 +12,8 @@ Meteor.Router.add({
     	else{
     		Meteor.Router.to("/");
     	}
+    },
+    '/game' : function(){
+        return "game";
     }
 });
