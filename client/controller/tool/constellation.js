@@ -1,7 +1,8 @@
 var win = this;
 win.Constellation = {
+	libs : libs,
 	analysis : function(year,month,day){
-
+		
 	},
 	match : function(year,month,day){
 

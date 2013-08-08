@@ -24,4 +24,5 @@ if (Meteor.isClient) {
 		"submit #personal-info-form" : win.HallHandler.updatePersonInfo,
 		"click .hall-enter-btn" : win.RoomHandler.enterRoom
 	});
+	Template.game.rendered = win.Effect.Game.init;
 }

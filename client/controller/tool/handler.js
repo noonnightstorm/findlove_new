@@ -160,6 +160,7 @@ win.RoomHandler = {
 				u_id : Cookie.get("user_id")
 			},
 			c_cb = function(){
+				Cookie.set("room_id",id);
 				Meteor.Router.to("/game");
 			},
 			c_err_cb = function(){
@@ -177,12 +178,12 @@ win.RoomHandler = {
 			r_id : $(e.target).attr("r_id")
 		},
 		cb = function(){
-			console.log("callback");
 			var c_info = {
 				r_id : info.r_id,
 				u_id : Cookie.get("user_id")
 			},
 			c_cb = function(){
+				Cookie.set("room_id",info.r_id);
 				Meteor.Router.to("/game");
 			},
 			c_err_cb = function(){

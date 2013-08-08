@@ -67,7 +67,13 @@ this.db = {
 			room_id : info.r_id,
 			users : [info.u_id]
 		};
-		Controllers.insert(controller);
+		var _id = Controllers.insert(controller);
+		if(!_id){
+			err_cb();
+		}
+		else{
+			cb();
+		}
 	},
 	updateControllerNum : function(info,cb,err_cb){
 		cb();
