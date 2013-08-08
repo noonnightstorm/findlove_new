@@ -11,14 +11,25 @@
 				<span>房间</span><span id="room-id">{{room.name}}</span>
 			</div>
 			<button class="game-start-btn game-all-btn">开始游戏</button>
-			<div class="game-boy-all game-person-all" u_id="{{owner._id}}" brith="{{owner.profile.birthday}}">
+			<div class="game-boy-all game-person-all" u_id="{{owner._id}}" birth="{{owner.profile.birthday}}">
 				<div class="game-boy-circle">
 					<div class="game-boy-head game-all-image"></div>
 				</div>
 				<div class="game-boy-name">{{owner.username}}</div>
+				{{#if checkIniRoom_logic "0"}}
+					<div class="game-zodiac-box game-all-image" >
+						<div class="game-zodiac-intro">
+							<h2>星座特点：</h2>
+							<div class="zodiac-intro-text"></div>,
+							<div class="zodiac-tail-border">
+								<div class="zodiac-tail"></div>
+							</div>
+						</div>
+					</div>
+				{{/if}}
 			</div>
 			{{#each users}}
-			<div class="game-girl-all game-person-all" u_id="{{_id}}" brith="{{profile.birthday}}">
+			<div class="game-girl-all game-person-all" u_id="{{_id}}" birth="{{profile.birthday}}">
 				<div class="game-girl-circle">
 					<div class="game-girl-head game-all-image"></div>
 				</div>
@@ -27,16 +38,14 @@
 					<div class="light-bulb-on game-all-image"></div>
 				</div>
 				{{#if checkIniRoom_logic "0"}}
-					<div class="game-zodiac-box game-all-image" >,
-						<div class="game-zodiac-intro">,
-							<h2>星座特点：</h2>,
+					<div class="game-zodiac-box game-all-image" >
+						<div class="game-zodiac-intro">
+							<h2>星座特点：</h2>
 							<div class="zodiac-intro-text"></div>,
-							<div class="game-scroll-btn-down game-scroll-btn"></div>,
-							<div class="game-scroll-btn-up game-scroll-btn"></div>,
-							<div class="zodiac-tail-border">,
-								<div class="zodiac-tail"></div>,
-							</div>,
-						</div>,
+							<div class="zodiac-tail-border">
+								<div class="zodiac-tail"></div>
+							</div>
+						</div>
 					</div>
 				{{/if}}
 			</div>
@@ -59,6 +68,4 @@
 			</div>
 		</div>
 	</div>
-	<!-- 逻辑控制 -->
-	{{constellation_logic}}
 </template>

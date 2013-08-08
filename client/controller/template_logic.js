@@ -7,6 +7,3 @@ Template.game.checkIniRoom_logic = function(part){
 			return false;
 	}
 }
-Template.game.constellation_logic = function(){
-	console.log("123");
-}

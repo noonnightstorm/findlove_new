@@ -133,10 +133,24 @@ win.Effect = {
 	},
 	Game : {
 		init : function(){
-			
+			win.Effect.Game.showZodiac();
 		},
 		showZodiac : function(){
-			
+			var girls = $(".game-girl-all");
+			if(girls){
+				for(var i = 0;i<girls.length;i++){
+					var girl = $(girls[0]);
+					var girl_birth = girl.attr("birth");
+					var obj = win.Constellation.analysis(girl_birth);
+					girl.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+				}
+			}
+			var boy = $(".game-boy-all");
+			if(boy){
+				var boy_birth = boy.attr("birth");
+				var obj = win.Constellation.analysis(boy_birth);
+				boy.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+			}
 		},
 	}
 }

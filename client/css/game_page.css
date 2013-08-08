@@ -254,6 +254,42 @@
 	margin: 10px auto;
 	cursor: pointer;
 }
+.zodiac-num-0{
+	background-position: -388px 0px;
+}
+.zodiac-num-1{
+	background-position: -388px -87px;
+}
+.zodiac-num-2{
+	background-position: -388px -174px;
+}
+.zodiac-num-3{
+	background-position: -388px -261px;
+}
+.zodiac-num-4{
+	background-position: -388px -348px;
+}
+.zodiac-num-5{
+	background-position: -388px -435px;
+}
+.zodiac-num-6{
+	background-position: -388px -522px;
+}
+.zodiac-num-7{
+	background-position: -388px -609px;
+}
+.zodiac-num-8{
+	background-position: -388px -696px;
+}
+.zodiac-num-9{
+	background-position: -388px -783px;
+}
+.zodiac-num-10{
+	background-position: -388px -870px;
+}
+.zodiac-num-11{
+	background-position: -388px -957px;
+}
 .game-zodiac-intro{
 	width: 280px;
 	height: 130px;
