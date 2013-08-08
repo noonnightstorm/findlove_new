@@ -79,43 +79,83 @@ win.Constellation = {
 	libs : libs,
 	analysis : function(birth){
 		var objs = birth.split("-");
-		var num = parseInt(objs[1] + objs[2]);
-		if(num >= 321 && num <= 420){
-			return win.Constellation.libs[0];
+		var month = parseInt(objs[1],10);
+		var day = parseInt(objs[2],10);
+		switch(month){
+			case 1 :
+				if(day <= 19)
+					return  win.Constellation.libs[9];
+				else
+					return win.Constellation.libs[10];
+				break;
+			case 2 : 
+				if(day <= 18)
+					return  win.Constellation.libs[10];
+				else
+					return win.Constellation.libs[11];
+				break;
+			case 3 : 
+				if(day <= 20)
+					return  win.Constellation.libs[11];
+				else
+					return win.Constellation.libs[0];
+				break;
+			case 4 : 
+				if(day <= 20)
+					return  win.Constellation.libs[0];
+				else
+					return win.Constellation.libs[1];
+				break;
+			case 5 : 
+				if(day <= 20)
+					return  win.Constellation.libs[1];
+				else
+					return win.Constellation.libs[2];
+				break;
+			case 6 : 
+				if(day <= 21)
+					return  win.Constellation.libs[2];
+				else
+					return win.Constellation.libs[3];
+				break;
+			case 7 : 
+				if(day <= 22)
+					return  win.Constellation.libs[3];
+				else
+					return win.Constellation.libs[4];
+				break;
+			case 8 : 
+				if(day <= 22)
+					return  win.Constellation.libs[4];
+				else
+					return win.Constellation.libs[5];
+				break;
+			case 9 : 
+				if(day <= 22)
+					return  win.Constellation.libs[5];
+				else
+					return win.Constellation.libs[6];
+				break;
+			case 10 : 
+				if(day <= 22)
+					return  win.Constellation.libs[6];
+				else
+					return win.Constellation.libs[7];
+				break;
+			case 11 : 
+				if(day <= 21)
+					return  win.Constellation.libs[7];
+				else
+					return win.Constellation.libs[8];
+				break;
+			case 12 : 
+				if(day <= 21)
+					return  win.Constellation.libs[8];
+				else
+					return win.Constellation.libs[9];
+				break;
 		}
-		else if(num >= 421 && num <= 520){
-			return win.Constellation.libs[1];
-		}
-		else if(num >= 521 && num <= 621){
-			return win.Constellation.libs[2];
-		}
-		else if(num >= 622 && num <= 722){
-			return win.Constellation.libs[3];
-		}
-		else if(num >= 723 && num <= 822){
-			return win.Constellation.libs[4];
-		}
-		else if(num >= 823 && num <= 922){
-			return win.Constellation.libs[5];
-		}
-		else if(num >= 923 && num <= 1022){
-			return win.Constellation.libs[6];
-		}
-		else if(num >= 1023 && num <= 1121){
-			return win.Constellation.libs[7];
-		}
-		else if(num >= 1122 && num <= 1221){
-			return win.Constellation.libs[8];
-		}
-		else if((num>=1222&&num<=1231)||(num>=101&&num<=119)){
-			return win.Constellation.libs[9];
-		}
-		else if(num >= 120 && num <= 218){
-			return win.Constellation.libs[10];
-		}
-		else if(num >= 219 && num <= 320){
-			return win.Constellation.libs[11];
-		}
+		
 	},
 	match : function(obj,year,month,day){
 

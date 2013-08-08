@@ -10,7 +10,9 @@
 			<div id="game-room-title">
 				<span>房间</span><span id="room-id">{{room.name}}</span>
 			</div>
+			{{#if checkIniRoom_logic "0"}}
 			<button class="game-start-btn game-all-btn">开始游戏</button>
+			{{/if}}
 			<div class="game-boy-all game-person-all" u_id="{{owner._id}}" birth="{{owner.profile.birthday}}">
 				<div class="game-boy-circle">
 					<div class="game-boy-head game-all-image"></div>
@@ -20,7 +22,7 @@
 					<div class="game-zodiac-box game-all-image {{MaddZodiacClass_logic owner}}" >
 						<div class="game-zodiac-intro">
 							<h2>星座特点：</h2>
-							<div class="zodiac-intro-text"></div>,
+							<div class="zodiac-intro-text">{{MaddZodiacText_logic owner}}</div>,
 							<div class="zodiac-tail-border">
 								<div class="zodiac-tail"></div>
 							</div>
@@ -39,10 +41,10 @@
 						<div class="light-bulb-on game-all-image"></div>
 					</div>
 					{{#if checkIniRoom_logic "0"}}
-						<div class="game-zodiac-box game-all-image {{FaddZodiacClass_logic}}" >
+						<div class="game-zodiac-box game-all-image zodiac-num-{{FaddZodiac_logic.mark}}" >
 							<div class="game-zodiac-intro">
 								<h2>星座特点：</h2>
-								<div class="zodiac-intro-text"></div>,
+								<div class="zodiac-intro-text">{{FaddZodiac_logic.feature}}</div>,
 								<div class="zodiac-tail-border">
 									<div class="zodiac-tail"></div>
 								</div>

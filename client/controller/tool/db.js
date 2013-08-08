@@ -108,14 +108,22 @@ this.db = {
 	},
 	addControllerNum : function(info,cb,err_cb){
 		var controller = Controllers.findOne({room_id:info.r_id});
+		var user = {
+			user_id : Cookie.get("user_id"),
+			light : true
+		};
 		Controllers.update({_id:controller._id},{$addToSet:{
-			users : Cookie.get("user_id")
+			users : user
 		}},true,cb);
 	},
 	pullControllerNum : function(info){
 		var controller = Controllers.findOne({room_id:info.r_id});
-		Controllers.update({_id:controller._id},{$addToSet:{
-			users : Cookie.get("user_id")
+		var user = {
+			user_id : Cookie.get("user_id"),
+			light : true
+		};
+		Controllers.update({_id:controller._id},{$pull:{
+			users : user
 		}},true);
 	},
 	deleteController : function(info){

@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 		if(controller){
 			var users = [];
 			for(var i = 0;i < controller.users.length;i++){
-				var user = Users.findOne({_id:controller.users[i]});
+				var user = Users.findOne({_id:controller.users[i].user_id});
 				users.push(user);
 			}
 			return users;

@@ -7,16 +7,24 @@ Template.game.checkIniRoom_logic = function(part){
 		else
 			return false;
 	}
-}
+};
 Template.game.MaddZodiacClass_logic= function(owner){
 	var obj = win.Constellation.analysis(owner.profile.birthday);
+	var obj;
 	if(obj){
-		return "zodiac-num-"+obj.mark;
+		return "zodiac-num-" + obj.mark;
 	}
-}
-Template.game.FaddZodiacClass_logic= function(){
+};
+Template.game.MaddZodiacText_logic = function(owner){
+	var obj = win.Constellation.analysis(owner.profile.birthday);
+	var obj;
+	if(obj){
+		return obj.feature;
+	}
+};
+Template.game.FaddZodiac_logic = function(){
 	var obj = win.Constellation.analysis(this.profile.birthday);
 	if(obj){
-		return "zodiac-num-"+obj.mark;
+		return obj;
 	}
-}
+};

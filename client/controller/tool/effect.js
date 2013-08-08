@@ -139,52 +139,24 @@ win.Effect = {
 	},
 	Game : {
 		init : function(){
-			/*win.Effect.Game.showZodiac();
-			win.Effect.Game.constellationMatch();*/
-		},
-		showZodiac : function(){
-			var girls = $(".game-girl-all");
-			if(girls){
-				for(var i = 0;i<girls.length;i++){
-					var girl = $(girls[0]);
-					var girl_birth = girl.attr("birth");
-					var obj = win.Constellation.analysis(girl_birth);
-					console.log(obj);
-					if(obj){
-						girl.attr("constellation_id",obj.mark);
-						girl.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
-						girl.find(".zodiac-intro-text").text(obj.feature);
-					}
-				}
-			}
-			var boy = $(".game-boy-all");
-			if(boy){
-				var boy_birth = boy.attr("birth");
-				var obj = win.Constellation.analysis(boy_birth);
-				if(obj){
-					//boy.attr("constellation_id",obj.mark);
-					boy.attr("match_id",obj.match);
-					boy.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
-					boy.find(".zodiac-intro-text").text(obj.feature);
-				}
-			}
+			win.Effect.Game.constellationMatch();
 		},
 		constellationMatch : function(){
-			var boy = $(".game-boy-all");
-			var girls = $(".game-girl-all");
-			if(boy && girls){
-				var boy_id = boy.attr("match_id");
+			var boyDom = $(".game-boy-all");
+			var girlDoms = $(".game-girl-all");
+			var boy = win.Constellation.analysis(boyDom.attr("birth"));
+			if(boy && girlDoms){
 				var mark = true;
-				for(var i = 0;i < girls.length;i++){
-					var girl = $(girls[i]);
-					var girl_id = girl.attr("constellation_id");
-					if(girl_id == boy_id){
-						girl.find(".game-girl-circle").addClass("game-zodiac-match");
+				for(var i = 0;i < girlDoms.length;i++){
+					var girlDom = $(girlDoms[i]);
+					var girl = win.Constellation.analysis(girlDom.attr("birth"));
+					if(girl && girl.mark == boy.match){
+						girlDom.find(".game-girl-circle").addClass("game-zodiac-match");
 						mark = false;
 					}
 				}
 				if(mark == false){
-					boy.find(".game-boy-circle").addClass("game-zodiac-match");
+					boyDom.find(".game-boy-circle").addClass("game-zodiac-match");
 				}
 			}
 		}
