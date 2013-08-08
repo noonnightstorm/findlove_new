@@ -40,7 +40,7 @@ win.VerifyHadnler = {
 		},
 		cb = function(data){
 			Cookie.set("user_id",data._id);
-			Cookie.set("name",data.name);
+			Cookie.set("name",data.username);
 			Cookie.set("account",data.account);
 			Cookie.set("gender",data.gender);
 			Meteor.Router.to("/game-hall");
@@ -160,8 +160,10 @@ win.RoomHandler = {
 				u_id : Cookie.get("user_id")
 			},
 			c_cb = function(){
-				Cookie.set("room_id",id);
-				Meteor.Router.to("/game");
+				if(id){
+					Cookie.set("room_id",id);
+					Meteor.Router.to("/game");
+				}
 			},
 			c_err_cb = function(){
 				//later

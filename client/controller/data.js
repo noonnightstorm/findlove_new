@@ -17,14 +17,36 @@ if (Meteor.isClient) {
 	Template.game.controller = function(){
 		return Controllers.findOne({room_id:Cookie.get("room_id")});
 	};
+	Template.game.owner = function(){
+		var room = Rooms.findOne({_id:Cookie.get("room_id")});
+		if(room){
+			var owner = Users.findOne({_id:room.owner_id});
+			return owner;
+		}
+	};
 	Template.game.users = function(){
 		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
-		var users = [];
-		for(var i = 0;i < controller.users;i++){
-			var user = Users.findOne({_id:controller.users[i]});
-			users.push();
-		}	
-		return users;
+		if(controller){
+			var users = [];
+			for(var i = 0;i < controller.users.length;i++){
+				var user = Users.findOne({_id:controller.users[i]});
+				users.push(user);
+			}
+			return users;
+		}
+	};
+	Template.game.userId = function(){
+		var user_id = Cookie.get("user_id");
+		var room_id = Cookie.get("room_id");
+		var controller = Controllers.findOne({room_id:room_id});
+		var i = 0;
+		if(controller){
+			for(;i<controller.users.length;i++){
+				if(user_id == controller.users[i])
+					return ;
+			}
+		}
+		return "game-person-" + i;
 	};
 }
 

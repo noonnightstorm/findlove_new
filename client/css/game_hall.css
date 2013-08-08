@@ -60,7 +60,7 @@
 }
 
 /*基本上所有的按钮*/
-.hall-enter-btn,.hall-back-btn,.hall-submit-btn,.try,.cancel{
+.hall-all-btn{
 	width: 55px;
 	height: 35px;
 	float: right;
@@ -72,15 +72,26 @@
 	font-size: 23px;
 	color: #fff;
 	cursor: pointer;
+	opacity: 0.6;
+	-webkit-transition: opacity 0.4s;
+	-moz-transition: opacity 0.4s;
+	-o-transition: opacity 0.4s;
+	transition: opacity 0.4s;
 }
-.hall-enter-btn:hover,.hall-back-btn:hover,.hall-submit-btn:hover,.try:hover,.cancel:hover{
-	opacity: 0.7;
+.hall-all-btn:hover{
+	opacity: 1;
 }
-.hall-enter-btn:active,.hall-back-btn:active,.hall-submit-btn:active,.try:active,.cancel:active{
+.hall-all-btn:active{
 	width: 51px;
 	height: 31px;
 	margin: 2px;
 	font-size: 20px;
+}
+.hall-enter-btn{
+	margin-top: -30px;
+}
+.hall-enter-btn:active{
+	margin-top: -28px;
 }
 .hall-back-btn,.hall-submit-btn{
 	margin-right: 50px;

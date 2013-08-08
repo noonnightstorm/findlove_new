@@ -47,6 +47,7 @@ this.db = {
 		var obj = {
 			name : info.name,
 			owner : Cookie.get("name"),
+			owner_id : Cookie.get("user_id"),
 			num : 1
 		};
 		var _id = Rooms.insert(obj,cb);
@@ -65,7 +66,8 @@ this.db = {
 	initController : function(info,cb,err_cb){
 		var controller = {
 			room_id : info.r_id,
-			users : [info.u_id]
+			part : 0,
+			users : []
 		};
 		var _id = Controllers.insert(controller);
 		if(!_id){
@@ -76,6 +78,9 @@ this.db = {
 		}
 	},
 	updateControllerNum : function(info,cb,err_cb){
-		cb();
+		var controller = Controllers.findOne({room_id:info.r_id});
+		Controllers.update({_id:controller._id},{$addToSet:{
+			users : Cookie.get("user_id")
+		}},true,cb);
 	}
 };

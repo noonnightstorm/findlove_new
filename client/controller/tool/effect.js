@@ -133,22 +133,10 @@ win.Effect = {
 	},
 	Game : {
 		init : function(){
-			win.Effect.Game.showZodiac();
+			
 		},
 		showZodiac : function(){
-			var zodiacIntroText = $('.zodiac-intro-text');
-			var person = $('.game-person-all');
-			for( i=0; i<6; i++){
-				var zodiacBox = $(Template.game_zodiac_box);
-				zodiacBox.attr('zodiac-num',1);
-				var zodiacNum = $(zodiacBox).attr('zodiac-num');
-				$(zodiacBox).css('background-position','-388px -'+zodiacNum*87+'px');
-				//zodiacBox.find('.zodiac-intro-text').text(zodiacIntro[zodiacNum]);
-				if( i== 5){
-					zodiacBox.find('.game-zodiac-intro').addClass('zodiac-intro-side');
-				}//让最右边的女生的星座文字能向左移
-				zodiacBox.appendTo(person[i]);
-			}
-		}
+			
+		},
 	}
 }

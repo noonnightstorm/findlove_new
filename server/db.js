@@ -1,3 +1,5 @@
-/*Meteor.startup(function () {
-  Users.remove({});
-});*/
+Meteor.startup(function () {
+  /*Users.remove({});
+  Rooms.remove({});
+  Controllers.remove({});*/
+});
