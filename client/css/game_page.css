@@ -54,6 +54,7 @@
 	-moz-transition: opacity 0.4s;
 	-o-transition: opacity 0.4s;
 	transition: opacity 0.4s;
+	border:none;
 }
 .game-all-btn:hover{
 	opacity: 1;
@@ -139,7 +140,7 @@
 	background: rgba(253,199,205,0.7);
 	text-align: center;
 }
-#game-input{
+#game-talk-input{
 	width: 300px;
 	height: 206px;
 	margin: 2px 0;
@@ -508,8 +509,6 @@
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 	border-radius: 5px;
-	opacity: 0;
-	display: none;
 }
 .game-dialog-text{
 	width: 331px;
@@ -608,16 +607,17 @@
 .light-bulb{
 	width: 45px;
 	height: 45px;
-	margin: 5px auto;
-	background-position: 0 -1118px;
+	float: left;
+	margin-left: 40px;
+	background-position: 0 -1165px;
 	cursor: pointer;
-	display: none;
 }
-.light-bulb-on{
+.light-bulb-off{
 	width: 45px;
 	height: 45px;
-	background-position: 0 -1165px;
-	opacity: 0;
+	float: left;
+	margin-left: 40px;
+	background-position: 0 -1118px;
 }
 .name-card-icon{
 	width: 55px;
@@ -636,9 +636,8 @@
 	width: 50px;
 	height: 25px;
 	float: right;
-	margin: -42px 10px 0 0;
+	margin: 10px -55px 0 0;
 	font-size: 20px;
-	cursor: pointer;
 }
 .prop-btn-boy{
 	margin: -15px 0 0;

@@ -1,17 +1,25 @@
 <template name="game">
 	<div id="game-all-screen">
 		<div id="game-game-screen">
-			<!-- <div id="game-input-box">
-				<div>
-					<textarea name="game-input" id="game-input" placeholder="输入框"></textarea>
-					<button class="game-submit-btn game-all-btn">ok</button>
-				</div>
-			</div> -->
 			<div id="game-room-title">
 				<span>房间</span><span id="room-id">{{room.name}}</span>
 			</div>
+			<!-- 男生初始化游戏按钮 -->
+			{{#if checkMale}}
 			{{#if checkIniRoom_logic "0"}}
 			<button class="game-start-btn game-all-btn">开始游戏</button>
+			{{/if}}
+			{{/if}}
+			<!-- 第一个回合 -->
+			{{#if checkMale}}
+			{{#if checkFirstPart "1"}}
+			<div id="game-input-box">
+				<div>
+					<textarea name="game-input" id="game-talk-input" placeholder="输入框"></textarea>
+					<button class="game-submit-btn game-all-btn" id="game-talk-btn">ok</button>
+				</div>
+			</div>
+			{{/if}}
 			{{/if}}
 			<div class="game-boy-all game-person-all" u_id="{{owner._id}}" birth="{{owner.profile.birthday}}">
 				<div class="game-boy-circle">
@@ -29,6 +37,14 @@
 						</div>
 					</div>
 				{{/if}}
+				{{#if checkMaleTalk}}
+				<div class="game-dialog game-boy-dialog">
+					<div class="game-dialog-text game-text-box">{{talk.owner.content}}</div>
+					<div class="dialog-tail-border">
+						<div class="dialog-tail"></div>
+					</div>
+				</div>
+				{{/if}}
 			</div>
 			<div class="game-girl-container">
 				{{#each users}}
@@ -37,9 +53,6 @@
 						<div class="game-girl-head game-all-image"></div>
 					</div>
 					<div class="game-girl-name">{{username}}</div>
-					<div class="light-bulb game-all-image">
-						<div class="light-bulb-on game-all-image"></div>
-					</div>
 					{{#if checkIniRoom_logic "0"}}
 						<div class="game-zodiac-box game-all-image zodiac-num-{{FaddZodiac_logic.mark}}" >
 							<div class="game-zodiac-intro">
@@ -50,6 +63,14 @@
 								</div>
 							</div>
 						</div>
+					{{else}}
+						{{#if checkLight}}
+						<div class="light-bulb game-all-image">
+						{{else}}
+						</div>
+						<div class="light-bulb-off game-all-image"></div>
+						{{/if}}
+						<button class="prop-btn game-all-btn">道具</button>
 					{{/if}}
 				</div>
 				{{/each}}

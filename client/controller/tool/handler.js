@@ -219,6 +219,7 @@ win.RoomHandler = {
 					};
 					win.db.deleteRoom(info);
 					win.db.deleteController(info);
+					win.db.deleteTalk(info);
 					Meteor.Router.to("/game-hall");
 				}
 				Cookie.set("room_id",undefined);
@@ -230,7 +231,7 @@ win.RoomHandler = {
 	}
 };
 
-var GameHandler = {
+win.GameHandler = {
 	game : [
 		"ready",
 		"introduction",
@@ -243,29 +244,51 @@ var GameHandler = {
 	run : function(){
 		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
 		if(controller){
-			this.call(win.GameHandler.game[controller.part]);
-			win.db.NextPart(controller._id);
+			var handler = win.GameHandler;
+			var cb = function(){
+				win.db.NextPart(controller._id);
+				win.GameHandler.run();
+			};
+			handler[handler.game[controller.part]](cb);
 		}
 	},
-	ready : function(){
-		win.GameHandler.run();
+	ready : function(cb){
+		var room_id = Cookie.get("room_id");
+		if(room_id){
+			win.db.initTalk(room_id);
+			cb();
+		}
 	},
-	introduction : function(){
-		win.GameHandler.run();
+	introduction : function(cb){
+			
 	},
-	girlQA : function(){
-		win.GameHandler.run();
+	girlQA : function(cb){
+		console.log("ready");
 	},
-	boyMV : function(){
-		win.GameHandler.run();
+	boyMV : function(cb){
+		console.log("ready");
 	},
-	topic : function(){
-		win.GameHandler.run();
+	topic : function(cb){
+		console.log("ready");
 	},
-	girlMV : function(){
-		win.GameHandler.run();
+	girlMV : function(cb){
+		console.log("ready");
 	},
-	gameOver : function(){
-
+	gameOver : function(cb){
+		console.log("ready");
+	},
+	talk : function(){
+		var talk = {
+			user_id : Cookie.get("user_id"),
+			content : $("#game-talk-input").val()
+		};
+		win.db.insertTalk(talk);
+		setTimeout(function(){
+			var talk = {
+				user_id : Cookie.get("user_id"),
+				content : null
+			};
+			win.db.insertTalk(talk);
+		},3000);
 	}
 };

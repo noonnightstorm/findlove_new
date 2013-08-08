@@ -48,6 +48,12 @@ if (Meteor.isClient) {
 		}
 		return "game-person-" + i;
 	};
+	Template.game.talk = function(){
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		if(talk){
+			return talk
+		}
+	}
 }
 
 

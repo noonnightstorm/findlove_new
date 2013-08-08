@@ -26,6 +26,8 @@ if (Meteor.isClient) {
 	});
 	Template.game.rendered = win.Effect.Game.init;
 	Template.game.events({
-		"click .game-quit-btn" : win.RoomHandler.exitRoom
+		"click .game-quit-btn" : win.RoomHandler.exitRoom,
+		"click .game-start-btn" : win.GameHandler.run,
+		"click #game-talk-btn" : win.GameHandler.talk
 	});
 }

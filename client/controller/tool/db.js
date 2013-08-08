@@ -132,9 +132,61 @@ this.db = {
 			Controllers.remove({_id:controller._id});
 		}
 	},
-	NextPart : function(id){
-		Controllers.update({_id:controller._id},{$inc:{
+	NextPart : function(controller_id){
+		Controllers.update({_id:controller_id},{$inc:{
 			part : 1
 		}},true);
+	},
+	initTalk : function(r_id){
+		var controller = Controllers.findOne({room_id:r_id});
+		if(controller){
+			var talk = {
+				room_id : r_id,
+				owner : {
+					user_id : Cookie.get("user_id"),
+					content : null
+				},
+				guest : []
+			};
+			for(var i = 0 ;i<controller.users.length;i++){
+				var obj = {
+					user_id : controller.users[i].user_id,
+					content : null
+				};
+				talk.guest.push(obj);
+			}
+			var _id = Talks.insert(talk);
+		}
+	},
+	deleteTalk : function(info){
+		var talk = Talks.find({room_id:info.r_id});
+		if(talk){
+			Talks.remove({_id:talk._id});
+		}
+	},
+	insertTalk : function(info){
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		console.log(info);
+		if(talk){
+			//先检查是否为拥有者
+			if(talk.owner.user_id == info.user_id){
+				talk.owner.content = info.content;
+				Talks.update({_id:talk._id},{$set:{
+					owner : talk.owner
+				}});
+			}
+			//再检验嘉宾
+			else{
+				for(var i = 0 ;i < talk.guest.length ;i++){
+					if(talk.guest[i].user_id == info.user_id){
+						talk.guest[i].content = info.content;
+						Talks.update({_id:talk._id},{$set:{
+							guest : talk.guest
+						}});
+						break;
+					}
+				}
+			}
+		}
 	}
 };
