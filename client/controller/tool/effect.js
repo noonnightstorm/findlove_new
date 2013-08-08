@@ -23,7 +23,7 @@ win.Effect = {
 		showMenu : function(){
 			var arrow = $('#hall-nav-arrow');
 			var navBtn = $('.nav-btn');
-			var content = $('.content');
+			var content = $('.hall-content');
 			for(var i = 0;i < navBtn.length;i++){
 				$(navBtn[i]).attr("num",i);
 			}
@@ -91,49 +91,56 @@ win.Effect = {
 			});
 		},
 		showTips : function(){
-
-			//by Sherlock ,it should modify later
-			var i=0;
-			var tutorialText = ['初来非诚勿扰，可是要先完成自己的资料的哦',
-			'虽是游戏，但还是需要一些道具！可以试用哦，使用的话说不定有意想不到的收获！',
-			'哈哈！作为男生有权利创建一个房间等待女嘉宾的到来哦！快快创建吧！',
-			'女生可以随意选择一个心仪的房间进入游戏哦！'];
-			for( i=0; i<3;i++){
-				var box = $(win.ATemplate.hall_tutorail_box);
-				if( i==2 && Cookie.get("gender") =='female'){
-					i++;
+			var user = Users.findOne({_id:Cookie.get("user_id")});
+			if(user){
+				if(user.profile.new_mark == true){
+					//by Sherlock ,it should modify later
+					var i=0;
+					var tutorialText = ['初来非诚勿扰，可是要先完成自己的资料的哦',
+					'虽是游戏，但还是需要一些道具！可以试用哦，使用的话说不定有意想不到的收获！',
+					'哈哈！作为男生有权利创建一个房间等待女嘉宾的到来哦！快快创建吧！',
+					'女生可以随意选择一个心仪的房间进入游戏哦！'];
+					$(".hall-tutorial").css("display","block");
+					for(; i<3;i++){
+						var box = $(win.ATemplate.hall_tutorail_box);
+						if( i==2 && Cookie.get("gender") =='female'){
+							i++;
+						}
+						box.addClass('hall-tutorial-box'+i);
+						box.find('.tutorial-content').children('p').text(tutorialText[i]);
+						box.appendTo('.hall-tutorial');
+					}
+					var num = 0;
+					var tutorialBox = $('.hall-tutorial-box');
+					$(tutorialBox[0]).css({
+						'display':'block',
+						'opacity':1
+					});
+					$(tutorialBox[2]).children('.tutorial-content').children('.tutorial-next-btn').text("开始游戏！");
+					$('.tutorial-next-btn').click(function(){
+						if( num != 2 ){
+							$(tutorialBox[num]).animate({opacity:0},500,function(){
+								$(this).css('display','none');
+								$(tutorialBox[num+1]).css('display','block');
+								$(tutorialBox[num+1]).animate({opacity:1},500);
+								num++;
+							});
+						}
+						else{
+							$('.hall-tutorial').animate({opacity:0},500,function(){
+								$(this).css('display','none');
+								win.db.cencelNewMark();
+							});
+						}
+					});
 				}
-				box.addClass('hall-tutorial-box'+i);
-				box.find('.tutorial-content').children('p').text(tutorialText[i]);
-				box.appendTo('.hall-tutorial');
 			}
-			var num = 0;
-			var tutorialBox = $('.hall-tutorial-box');
-			$(tutorialBox[0]).css({
-				'display':'block',
-				'opacity':1
-			});
-			$(tutorialBox[2]).children('.tutorial-content').children('.tutorial-next-btn').text("开始游戏！");
-			$('.tutorial-next-btn').click(function(){
-				if( num != 2 ){
-					$(tutorialBox[num]).animate({opacity:0},500,function(){
-						$(this).css('display','none');
-						$(tutorialBox[num+1]).css('display','block');
-						$(tutorialBox[num+1]).animate({opacity:1},500);
-						num++;
-					});
-				}
-				else{
-					$('.hall-tutorial').animate({opacity:0},500,function(){
-						$(this).css('display','none');
-					});
-				}
-			});
 		}
 	},
 	Game : {
 		init : function(){
-			win.Effect.Game.showZodiac();
+			/*win.Effect.Game.showZodiac();
+			win.Effect.Game.constellationMatch();*/
 		},
 		showZodiac : function(){
 			var girls = $(".game-girl-all");
@@ -142,15 +149,44 @@ win.Effect = {
 					var girl = $(girls[0]);
 					var girl_birth = girl.attr("birth");
 					var obj = win.Constellation.analysis(girl_birth);
-					girl.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+					console.log(obj);
+					if(obj){
+						girl.attr("constellation_id",obj.mark);
+						girl.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+						girl.find(".zodiac-intro-text").text(obj.feature);
+					}
 				}
 			}
 			var boy = $(".game-boy-all");
 			if(boy){
 				var boy_birth = boy.attr("birth");
 				var obj = win.Constellation.analysis(boy_birth);
-				boy.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+				if(obj){
+					//boy.attr("constellation_id",obj.mark);
+					boy.attr("match_id",obj.match);
+					boy.find(".game-zodiac-box").addClass("zodiac-num-"+obj.mark);
+					boy.find(".zodiac-intro-text").text(obj.feature);
+				}
 			}
 		},
+		constellationMatch : function(){
+			var boy = $(".game-boy-all");
+			var girls = $(".game-girl-all");
+			if(boy && girls){
+				var boy_id = boy.attr("match_id");
+				var mark = true;
+				for(var i = 0;i < girls.length;i++){
+					var girl = $(girls[i]);
+					var girl_id = girl.attr("constellation_id");
+					if(girl_id == boy_id){
+						girl.find(".game-girl-circle").addClass("game-zodiac-match");
+						mark = false;
+					}
+				}
+				if(mark == false){
+					boy.find(".game-boy-circle").addClass("game-zodiac-match");
+				}
+			}
+		}
 	}
 }

@@ -191,11 +191,81 @@ win.RoomHandler = {
 			c_err_cb = function(){
 				//later
 			};
-			win.db.updateControllerNum(c_info,c_cb,c_err_cb);
+			win.db.addControllerNum(c_info,c_cb,c_err_cb);
 		},
 		err_cb = function(){
 			//later
 		};
-		win.db.updateRoomNum(info,cb,err_cb);
+		win.db.addRoomNum(info,cb,err_cb);
+	},
+	exitRoom : function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			//只能在开始和结束离开
+			if(controller.part == 0 || controller == 6){
+				//女生离场
+				if(Cookie.get("gender") == "female"){
+					var info = {
+						r_id : controller.room_id
+					};
+					win.db.pullControllerNum(info);
+					win.db.reduceRoomNum(info);
+					Meteor.Router.to("/game-hall");
+				}
+				//男生离场
+				else{
+					var info = {
+						r_id : controller.room_id
+					};
+					win.db.deleteRoom(info);
+					win.db.deleteController(info);
+					Meteor.Router.to("/game-hall");
+				}
+				Cookie.set("room_id",undefined);
+			}
+			else{
+				alert("不能中途离场");
+			}
+		}
+	}
+};
+
+var GameHandler = {
+	game : [
+		"ready",
+		"introduction",
+		"girlQA",
+		"boyMV",
+		"topic",
+		"girlMV",
+		"gameOver"
+	],
+	run : function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			this.call(win.GameHandler.game[controller.part]);
+			win.db.NextPart(controller._id);
+		}
+	},
+	ready : function(){
+		win.GameHandler.run();
+	},
+	introduction : function(){
+		win.GameHandler.run();
+	},
+	girlQA : function(){
+		win.GameHandler.run();
+	},
+	boyMV : function(){
+		win.GameHandler.run();
+	},
+	topic : function(){
+		win.GameHandler.run();
+	},
+	girlMV : function(){
+		win.GameHandler.run();
+	},
+	gameOver : function(){
+
 	}
 };

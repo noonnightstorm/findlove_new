@@ -23,16 +23,26 @@
 				</div>
 				{{/each}}
 			</div>
-			<div class="nav">
+			<div class="hall-nav">
 				<div id="hall-nav-arrow"></div>
-				<div class="nav-btn"><div class="nav-logo nav-logo1 hall-all-image"></div><span>建立房间</span></div>
-				<div class="nav-btn"><div class="nav-logo nav-logo2 hall-all-image"></div><span>道具商城</span></div>
-				<div class="nav-btn"><div class="nav-logo nav-logo3 hall-all-image"></div><span>爱听广播</span></div>
-				<div class="nav-btn"><div class="nav-logo nav-logo4 hall-all-image"></div><span>我的名片</span></div>
-				<div class="exit"><div class="nav-logo nav-logo5 hall-all-image"></div><span>bye bye</span></div>
+				<div class="nav-btn" nav-num="0">
+					<div class="nav-logo nav-logo1 hall-all-image"></div><span>建立房间</span>
+				</div>
+				<div class="nav-btn" nav-num="1">
+					<div class="nav-logo nav-logo2 hall-all-image"></div><span>道具商城</span>
+				</div>
+				<div class="nav-btn" nav-num="2">
+					<div class="nav-logo nav-logo3 hall-all-image"></div><span>爱听广播</span>
+				</div>
+				<div class="nav-btn" nav-num="3">
+					<div class="nav-logo nav-logo4 hall-all-image"></div><span>我的名片</span>
+				</div>
+				<div class="exit">
+					<div class="nav-logo nav-logo5 hall-all-image"></div><span>bye bye</span>
+				</div>
 			</div>
 			<div id="hall-help">
-				<div class="hall-help-text">
+				<div class="hall-sub-help">
 					<h1>游戏分3部分</h1>
 					<p>
 						<span class="hall-help-part">part one :</span>
@@ -47,49 +57,125 @@
 						<span class="hall-help-content">男生权利，牵手成功，双方互换联系方式</span>
 					</p>
 				</div>
-				<div class="hall-help-arrow-container">
-					<div class="hall-help-hidden-arrow"></div>
+				<div class="arrow-container">
+					<div class="hidden-arrow"></div>
 				</div>
 				<div class="hall-help-btn">
 					游戏帮助
 				</div>
 			</div>
-			<div class="main">
-				<div class="content">
+			<div class="hall-main">
+				<div class="hall-content">
 					<div class="cannot-create">
 						<div id="cannot-create-sign" class="hall-all-image"></div>
 						<div class="notice">女生是不能建立房间的哦！！</div>
 						<button class="hall-back-btn hall-all-btn">←</button>
 					</div>
 				</div>
-				<div class="content">
+				<div class="hall-content">
+					<div class="item-container">
 					<div class="item">
 						<div class="item-logo item-logo1  hall-all-image"></div>
 						<div class="item-info">
-							<h2>锁</h2>
-							<p>功能：可隐藏我的名片</p>
+							<h2>鸡蛋</h2>
+							<p>功能：可投掷不喜欢的男嘉宾</p><br>
 							<p>钻石指数：<span class="star">☆</span></p>
-							<button class="try">试用</button>
-							<button class="cancel">取消</button>
+							<button class="item-forever hall-all-btn">永久</button>
 						</div>
 					</div>
 					<div class="item">
 						<div class="item-logo item-logo2  hall-all-image"></div>
 						<div class="item-info">
-							<h2>任意牌</h2>
-							<p>功能：可随意调动发言顺序</p>
+							<h2>鲜花</h2>
+							<p>功能：为喜欢的男嘉宾投鲜花，让他注意你</p>
 							<p>钻石指数：<span class="star">☆</span></p>
-							<button class="try">试用</button>
-							<button class="cancel">取消</button>
+							<button class="item-forever hall-all-btn">永久</button>
 						</div>
 					</div>
-					<button class="hall-back-btn">←</button>
-					<button class="hall-submit-btn">ok</button>
+					<div class="item">
+						<div class="item-logo item-logo3  hall-all-image"></div>
+						<div class="item-info">
+							<h2>爆灯</h2>
+							<p>功能：坦率地为他留灯到最后</p><br>
+							<p>钻石指数：<span class="star">☆☆☆</span></p>
+							<button class="item-forever hall-all-btn">永久</button>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item-logo item-logo4  hall-all-image"></div>
+						<div class="item-info">
+							<h2>锁</h2>
+							<p>功能：可隐藏我的名片</p><br>
+							<p>钻石指数：<span class="star">☆</span></p>
+							<button class="item-try hall-all-btn">试用</button>
+							<button class="item-cancel hall-all-btn">取消</button>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item-logo item-logo5  hall-all-image"></div>
+						<div class="item-info">
+							<h2>飞机传书</h2>
+							<p>功能：能够秘密地和男嘉宾传话不被其他人知道</p>
+							<p>钻石指数：<span class="star">☆☆</span></p>
+							<button class="item-try hall-all-btn">试用</button>
+							<button class="item-cancel hall-all-btn">取消</button>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item-logo item-logo6  hall-all-image"></div>
+						<div class="item-info">
+							<h2>任意牌</h2>
+							<p>功能：可随意调动发言顺序</p><br>
+							<p>钻石指数：<span class="star">☆</span></p>
+							<button class="item-not-available hall-all-btn">未开放</button>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item-logo item-logo7  hall-all-image"></div>
+						<div class="item-info">
+							<h2>心动时分</h2>
+							<p>功能：给自己机会和对方表白心意，时间为2分钟</p>
+							<p>钻石指数：<span class="star">☆</span></p>
+							<button class="item-not-available hall-all-btn">未开放</button>
+						</div>
+					</div>
+					<div class="item">
+						<div class="item-logo item-logo8  hall-all-image"></div>
+						<div class="item-info">
+							<h2>有问必答</h2>
+							<p>功能：无条件地要求对方回答自己的一个问题</p>
+							<p>钻石指数：<span class="star">☆</span></p>
+							<button class="item-not-available hall-all-btn">未开放</button>
+						</div>
+					</div>
 					<div class="hall-scroll-btn hall-scroll-up"></div>
 					<div class="hall-scroll-btn hall-scroll-down"></div>
+					</div>
+					<div class="hall-item-sidebar">
+						<div class="hall-my-item-container">
+						<div class="hall-scroll-btn hall-scroll-up"></div>
+						<div class="hall-scroll-btn hall-scroll-down"></div>
+						<div class="hall-my-item">
+							<div class="item-logo item-logo1  hall-all-image"></div>
+							<h2>鸡蛋</h2>
+							<button class="item-forever hall-all-btn">永久</button>
+						</div>
+						<div class="hall-my-item">
+							<div class="item-logo item-logo2  hall-all-image"></div>
+							<h2>鲜花</h2>
+							<button class="item-forever hall-all-btn">永久</button>
+						</div>
+						<div class="hall-my-item">
+							<div class="item-logo item-logo3  hall-all-image"></div>
+							<h2>爆灯</h2>
+							<button class="item-forever hall-all-btn">永久</button>
+						</div>
+						</div>
+						<div class="hall-my-item-title">我的道具</div>
+					</div>
 				</div>
-				<div class="content">
-					<div class="title">广播时间</div>
+				<div class="hall-content">
+					<div class="hall-content-title">广播时间</div>
 					<div class="no-broadcast">现在暂无广播哦！</div>
 					<div class="broadcast">
 						<ul>
@@ -99,7 +185,7 @@
 						<div class="hall-scroll-btn hall-scroll-down"></div>
 					</div>
 				</div>
-				<div class="content">
+				<div class="hall-content">
 					<div class="info-box">
 					<form id="personal-info-form">
 						<div>
@@ -136,8 +222,8 @@
 							<div class="mv-hint">（只需将个人mv上传到优酷，复制网址粘贴到上面的输入框即可！）</div>
 						</div>
 						<div>
-							<button class="hall-back-btn" type="reset">↺</button>
-							<button class="hall-submit-btn" type="submit">ok</button>
+							<button class="hall-all-btn hall-back-btn" type="reset">↺</button>
+							<button class="hall-all-btn hall-submit-btn" type="submit">ok</button>
 						</div>
 					</form>
 					<div class="hall-scroll-btn hall-scroll-up"></div>

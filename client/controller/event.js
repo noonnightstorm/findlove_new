@@ -25,4 +25,7 @@ if (Meteor.isClient) {
 		"click .hall-enter-btn" : win.RoomHandler.enterRoom
 	});
 	Template.game.rendered = win.Effect.Game.init;
+	Template.game.events({
+		"click .game-quit-btn" : win.RoomHandler.exitRoom
+	});
 }

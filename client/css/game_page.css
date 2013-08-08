@@ -1,3 +1,19 @@
+::-webkit-scrollbar-track-piece{
+   background: -webkit-gradient(linear,right top,left bottom,
+		from(#fee0db),color-stop(0.6,#ffbcc6),to(#ffbcc6));
+   -webkit-border-radius:0;
+}
+::-webkit-scrollbar{
+   width:10px;
+}
+::-webkit-scrollbar-thumb{
+   background-color: #ffbcc6;
+   -webkit-border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover{
+   background-color: #fc8293;
+}
+
 #game-all-screen{
 	width: 100%;
 	height: 100%;
@@ -205,7 +221,7 @@
 	width: 130px;
 	height: 40px;
 	position: absolute;
-	margin-top: 40px;
+	bottom: 0px;
 	right: 10px;
 	padding-left: 20px;
 	border: 10px;
@@ -253,6 +269,33 @@
 	height: 85px;
 	margin: 10px auto;
 	cursor: pointer;
+}
+/*星座*/
+.game-zodiac-match{
+	-webkit-animation: shine 1.5s linear infinite;
+	-moz-animation: shine 1.5s linear infinite;
+	-o-animation: shine 1.5s linear infinite;
+	animation: shine 1.5s linear infinite;
+}
+@-webkit-keyframes shine{
+	0% {-webkit-box-shadow: 0 0 30px rgba(0,0,0,0);}
+	50% {-webkit-box-shadow: 0 0 30px #fff46b;}
+	100% {-webkit-box-shadow: 0 0 30px rgba(0,0,0,0);}
+}
+@-moz-keyframes shine{
+	0% {-moz-box-shadow: 0 0 30px rgba(0,0,0,0);}
+	50% {-moz-box-shadow: 0 0 30px #fff46b;}
+	100% {-moz-box-shadow: 0 0 30px rgba(0,0,0,0);}
+}
+@-o-keyframes shine{
+	0% {-o-box-shadow: 0 0 30px rgba(0,0,0,0);}
+	50% {-o-box-shadow: 0 0 30px #fff46b;}
+	100% {-o-box-shadow: 0 0 30px rgba(0,0,0,0);}
+}
+@keyframes shine{
+	0% {box-shadow: 0 0 30px rgba(0,0,0,0);}
+	50% {box-shadow: 0 0 30px #fff46b;}
+	100% {box-shadow: 0 0 30px rgba(0,0,0,0);}
 }
 .zodiac-num-0{
 	background-position: -388px 0px;
@@ -306,10 +349,12 @@
 	display: none;
 }
 .zodiac-intro-text{
+
 	width: 280px;
 	height: 110px;
-	font-size: 18px;
+	font-size: 14px;
 	line-height: 25px;
+	letter-spacing: 0px;
 	overflow: hidden;
 }
 .game-zodiac-box:hover .game-zodiac-intro{
@@ -376,7 +421,7 @@
 .game-boy-all{
 	width: 225px;
 	height: 310px;
-	margin: 50px auto 0 auto;
+	margin: 34px 0 0 389px;
 }
 .game-boy-circle{
 	width: 205px;
@@ -410,11 +455,16 @@
 	color: #ff3385;
 }
 /*女生*/
+.game-girl-container{
+	width: 965px;
+	height: 250px;
+	margin: 96px 0 0 27px;
+}
 .game-girl-all{
 	width: 180px;
 	height: 250px;
-	display: inline-block;
-	margin: 60px 10px 0 10px;
+	float: left;
+	margin-left: 13px;
 }
 .game-girl-circle{
 	width: 166px;

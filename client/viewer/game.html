@@ -17,7 +17,7 @@
 				</div>
 				<div class="game-boy-name">{{owner.username}}</div>
 				{{#if checkIniRoom_logic "0"}}
-					<div class="game-zodiac-box game-all-image" >
+					<div class="game-zodiac-box game-all-image {{MaddZodiacClass_logic owner}}" >
 						<div class="game-zodiac-intro">
 							<h2>星座特点：</h2>
 							<div class="zodiac-intro-text"></div>,
@@ -28,28 +28,30 @@
 					</div>
 				{{/if}}
 			</div>
-			{{#each users}}
-			<div class="game-girl-all game-person-all" u_id="{{_id}}" birth="{{profile.birthday}}">
-				<div class="game-girl-circle">
-					<div class="game-girl-head game-all-image"></div>
-				</div>
-				<div class="game-girl-name">{{username}}</div>
-				<div class="light-bulb game-all-image">
-					<div class="light-bulb-on game-all-image"></div>
-				</div>
-				{{#if checkIniRoom_logic "0"}}
-					<div class="game-zodiac-box game-all-image" >
-						<div class="game-zodiac-intro">
-							<h2>星座特点：</h2>
-							<div class="zodiac-intro-text"></div>,
-							<div class="zodiac-tail-border">
-								<div class="zodiac-tail"></div>
+			<div class="game-girl-container">
+				{{#each users}}
+				<div class="game-girl-all game-person-all" u_id="{{_id}}" birth="{{profile.birthday}}">
+					<div class="game-girl-circle">
+						<div class="game-girl-head game-all-image"></div>
+					</div>
+					<div class="game-girl-name">{{username}}</div>
+					<div class="light-bulb game-all-image">
+						<div class="light-bulb-on game-all-image"></div>
+					</div>
+					{{#if checkIniRoom_logic "0"}}
+						<div class="game-zodiac-box game-all-image {{FaddZodiacClass_logic}}" >
+							<div class="game-zodiac-intro">
+								<h2>星座特点：</h2>
+								<div class="zodiac-intro-text"></div>,
+								<div class="zodiac-tail-border">
+									<div class="zodiac-tail"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-				{{/if}}
+					{{/if}}
+				</div>
+				{{/each}}
 			</div>
-			{{/each}}
 			<div class="game-bottom-tips">
 				提示：男生请在一分钟之内做自我介绍
 			</div>
