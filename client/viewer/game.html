@@ -11,8 +11,7 @@
 			{{/if}}
 			{{/if}}
 			<!-- 第一个回合 -->
-			{{#if checkMale}}
-			{{#if checkFirstPart "1"}}
+			{{#if checkTalkInput}}
 			<div id="game-input-box">
 				<div>
 					<textarea name="game-input" id="game-talk-input" placeholder="输入框"></textarea>
@@ -20,17 +19,16 @@
 				</div>
 			</div>
 			{{/if}}
-			{{/if}}
 			<div class="game-boy-all game-person-all" u_id="{{owner._id}}" birth="{{owner.profile.birthday}}">
 				<div class="game-boy-circle">
 					<div class="game-boy-head game-all-image"></div>
 				</div>
 				<div class="game-boy-name">{{owner.username}}</div>
 				{{#if checkIniRoom_logic "0"}}
-					<div class="game-zodiac-box game-all-image {{MaddZodiacClass_logic owner}}" >
+					<div class="game-zodiac-box game-all-image {{MaddZodiacClass owner}}" >
 						<div class="game-zodiac-intro">
 							<h2>星座特点：</h2>
-							<div class="zodiac-intro-text">{{MaddZodiacText_logic owner}}</div>,
+							<div class="zodiac-intro-text">{{MaddZodiacText owner}}</div>,
 							<div class="zodiac-tail-border">
 								<div class="zodiac-tail"></div>
 							</div>
@@ -39,7 +37,7 @@
 				{{/if}}
 				{{#if checkMaleTalk}}
 				<div class="game-dialog game-boy-dialog">
-					<div class="game-dialog-text game-text-box">{{talk.owner.content}}</div>
+					<div class="game-dialog-text game-text-box">{{maleTalk}}</div>
 					<div class="dialog-tail-border">
 						<div class="dialog-tail"></div>
 					</div>
@@ -54,10 +52,10 @@
 					</div>
 					<div class="game-girl-name">{{username}}</div>
 					{{#if checkIniRoom_logic "0"}}
-						<div class="game-zodiac-box game-all-image zodiac-num-{{FaddZodiac_logic.mark}}" >
+						<div class="game-zodiac-box game-all-image zodiac-num-{{FaddZodiac.mark}}" >
 							<div class="game-zodiac-intro">
 								<h2>星座特点：</h2>
-								<div class="zodiac-intro-text">{{FaddZodiac_logic.feature}}</div>,
+								<div class="zodiac-intro-text">{{FaddZodiac.feature}}</div>,
 								<div class="zodiac-tail-border">
 									<div class="zodiac-tail"></div>
 								</div>
@@ -72,25 +70,30 @@
 						{{/if}}
 						<button class="prop-btn game-all-btn">道具</button>
 					{{/if}}
+					{{#if checkFemaleTalk}}
+						<div class="game-dialog game-girl-dialog">
+							<div class="game-dialog-text game-text-box">{{femaleTalk}}</div>
+							<div class="dialog-tail-border">
+								<div class="dialog-tail"></div>
+							</div>
+						</div>
+					{{/if}}
 				</div>
 				{{/each}}
 			</div>
 			<div class="game-bottom-tips">
-				提示：男生请在一分钟之内做自我介绍
+				提示：{{showPartTips}}
 			</div>
 			<div class="game-quit-btn">
 				<span>退出</span>
 				<div id="game-plane" class="game-all-image"></div>
 			</div>
-			<div class="game-fullscreen-notice">
-				<div class="zodiac-match-notice">
-					<h1>星座匹配</h1>
-					<p>太好了！XX星座和XX星座的匹配率是100%！</p>
-					<p>能够在这里遇见真的不容易，</p>
-					<p>彼此要好好珍惜这次缘分哦！</p>
-					<button class="game-notice-back game-all-btn">←</button>
-				</div>
+			{{#if checkThirdPart}}
+			<div class="game-mv-box">
+				<embed src="http://player.youku.com/player.php/sid/XMjg0MzY0MDE2/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" class="game-mv-content"></embed><br>
+				<button class="game-hide-mv-btn game-all-btn">返回</button>
 			</div>
+			{{/if}}
 		</div>
 	</div>
 </template>

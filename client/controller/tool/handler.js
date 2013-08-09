@@ -260,16 +260,65 @@ win.GameHandler = {
 		}
 	},
 	introduction : function(cb){
-			
+		var talk = Talks.findOne({room_id : Cookie.get("room_id")});
+		var room_id = Cookie.get("room_id");
+		if(talk && room_id){
+			win.db.turnTalk(talk.owner.user_id);
+			setTimeout(function(){
+				win.db.turnTalk(talk.owner.user_id);
+				cb();
+			},10*1000);
+		}	
 	},
 	girlQA : function(cb){
-		console.log("ready");
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		if(talk){
+			function girlTalk(count,obj){
+				setTimeout(function(){
+					win.db.turnTalk(obj.guest[count-1].user_id);
+					if(obj.guest.length<=count){
+						cb();
+						return;
+					}
+					win.db.turnTalk(obj.guest[count].user_id);
+					girlTalk(count+1,obj);
+				},10*1000);
+			}
+			if(talk.guest.length != 0){
+				win.db.turnTalk(talk.guest[0].user_id);
+				girlTalk(1,talk);
+			}
+		}
 	},
 	boyMV : function(cb){
-		console.log("ready");
+		setTimeout(function(){
+			var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+			if(controller){
+				//检验是否跳过这个环节
+				var mark = true;
+				//先检验男生
+				if(controller.owner.mv_mark == true){
+					mark = false;
+				}
+				//再检验女生
+				else{
+					for(var i = 0;i < controller.users.length ;i++){
+						if(controller.users[i].mv_mark == true){
+							mark = false;
+							break;
+						}
+					}
+				}
+
+				//处理结果
+				if(mark == true){
+					cb();
+				}
+			}
+		},5*60*1000);
 	},
 	topic : function(cb){
-		console.log("ready");
+		console.log("topic");
 	},
 	girlMV : function(cb){
 		console.log("ready");
@@ -282,6 +331,7 @@ win.GameHandler = {
 			user_id : Cookie.get("user_id"),
 			content : $("#game-talk-input").val()
 		};
+		$("#game-talk-input").val("");
 		win.db.insertTalk(talk);
 		setTimeout(function(){
 			var talk = {
@@ -290,5 +340,32 @@ win.GameHandler = {
 			};
 			win.db.insertTalk(talk);
 		},3000);
+	},
+	finishMV: function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			var controller = win.db.updateMVStatus(Cookie.get("user_id"));
+			//检验是否跳过这个环节
+			var mark = true;
+			//先检验男生
+			if(controller.owner.mv_mark == true){
+				mark = false;
+			}
+			//再检验女生
+			else{
+				for(var i = 0;i < controller.users.length ;i++){
+					if(controller.users[i].mv_mark == true){
+						mark = false;
+						break;
+					}
+				}
+			}
+
+			//处理结果
+			if(mark == true){
+				win.db.NextPart(controller._id);
+				win.GameHandler.run();
+			}	
+		}
 	}
 };

@@ -28,6 +28,7 @@ if (Meteor.isClient) {
 	Template.game.events({
 		"click .game-quit-btn" : win.RoomHandler.exitRoom,
 		"click .game-start-btn" : win.GameHandler.run,
-		"click #game-talk-btn" : win.GameHandler.talk
+		"click #game-talk-btn" : win.GameHandler.talk,
+		"click .game-hide-mv-btn" : win.GameHandler.finishMV
 	});
 }

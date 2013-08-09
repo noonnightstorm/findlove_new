@@ -71,7 +71,7 @@ this.db = {
 			owner_id : Cookie.get("user_id"),
 			num : 1
 		};
-		var _id = Rooms.insert(obj,cb);
+		var _id = Rooms.insert(obj);
 		if(!_id){
 			err_cb();
 		}
@@ -93,8 +93,13 @@ this.db = {
 		Rooms.remove({_id:info.r_id});
 	},
 	initController : function(info,cb,err_cb){
+		var room = Rooms.findOne({_id:info.r_id});
 		var controller = {
 			room_id : info.r_id,
+			owner : {
+				user_id : room.owner_id,
+				mv_mark : true 
+			},
 			part : 0,
 			users : []
 		};
@@ -110,7 +115,9 @@ this.db = {
 		var controller = Controllers.findOne({room_id:info.r_id});
 		var user = {
 			user_id : Cookie.get("user_id"),
-			light : true
+			light : true,
+			talk_mark : false,
+			mv_mark : true
 		};
 		Controllers.update({_id:controller._id},{$addToSet:{
 			users : user
@@ -119,8 +126,7 @@ this.db = {
 	pullControllerNum : function(info){
 		var controller = Controllers.findOne({room_id:info.r_id});
 		var user = {
-			user_id : Cookie.get("user_id"),
-			light : true
+			user_id : Cookie.get("user_id")
 		};
 		Controllers.update({_id:controller._id},{$pull:{
 			users : user
@@ -144,14 +150,16 @@ this.db = {
 				room_id : r_id,
 				owner : {
 					user_id : Cookie.get("user_id"),
-					content : null
+					content : null ,
+					talk_mark : false
 				},
 				guest : []
 			};
 			for(var i = 0 ;i<controller.users.length;i++){
 				var obj = {
 					user_id : controller.users[i].user_id,
-					content : null
+					content : null,
+					talk_mark : false
 				};
 				talk.guest.push(obj);
 			}
@@ -166,7 +174,6 @@ this.db = {
 	},
 	insertTalk : function(info){
 		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
-		console.log(info);
 		if(talk){
 			//先检查是否为拥有者
 			if(talk.owner.user_id == info.user_id){
@@ -177,9 +184,11 @@ this.db = {
 			}
 			//再检验嘉宾
 			else{
+				console.log("girl!!!!");
 				for(var i = 0 ;i < talk.guest.length ;i++){
 					if(talk.guest[i].user_id == info.user_id){
 						talk.guest[i].content = info.content;
+						console.log(talk.guest[i]);
 						Talks.update({_id:talk._id},{$set:{
 							guest : talk.guest
 						}});
@@ -187,6 +196,55 @@ this.db = {
 					}
 				}
 			}
+		}
+	},
+	turnTalk : function(user_id){
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		if(talk){
+			//先找男生
+			if(talk.owner.user_id == user_id){
+				talk.owner.talk_mark = !talk.owner.talk_mark;
+				Talks.update({_id:talk._id},{$set:{
+					owner : talk.owner
+				}});
+			}
+			//再找女生
+			else{
+				for(var i = 0 ;i < talk.guest.length ;i++){
+					if(talk.guest[i].user_id == user_id){
+						talk.guest[i].talk_mark = !talk.guest[i].talk_mark;
+						Talks.update({_id:talk._id},{$set:{
+							guest : talk.guest
+						}});
+						break;
+					}
+				}
+			}
+		}
+	},
+	updateMVStatus : function(user_id){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			//先改男生
+			if(controller.owner.user_id == Cookie.get("user_id")){
+				controller.owner.mv_mark = false;
+				Controllers.update({_id:controller._id},{$set:{
+					owner : controller.owner
+				}});
+			}
+			//再改女生
+			else{
+				for(var i = 0;i<controller.users.length;i++){
+					if(controller.users[i].user_id == Cookie.get("user_id")){
+						controller.users[i].mv_mark = false;
+						Controllers.update({_id:controller._id},{$set:{
+							users : controller.users
+						}});
+						break;
+					}
+				}
+			}
+			return controller;
 		}
 	}
 };
