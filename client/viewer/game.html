@@ -64,8 +64,8 @@
 					{{else}}
 						{{#if checkLight}}
 						<div class="light-bulb game-all-image">
-						{{else}}
 						</div>
+						{{else}}
 						<div class="light-bulb-off game-all-image"></div>
 						{{/if}}
 						<button class="prop-btn game-all-btn">道具</button>
@@ -77,6 +77,12 @@
 								<div class="dialog-tail"></div>
 							</div>
 						</div>
+					{{/if}}
+					{{#if checkMVBtn}}					
+						<button class="game-girl-mv-btn game-all-btn">mv</button>
+					{{/if}}
+					{{#if checkLove}}
+						<button class="game-choose-girl-btn game-all-btn">牵手</button>
 					{{/if}}
 				</div>
 				{{/each}}
@@ -92,6 +98,170 @@
 			<div class="game-mv-box">
 				<embed src="http://player.youku.com/player.php/sid/XMjg0MzY0MDE2/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" class="game-mv-content"></embed><br>
 				<button class="game-hide-mv-btn game-all-btn">返回</button>
+			</div>
+			{{/if}}
+			{{#if checkForthPart}}
+			<div class="game-fullscreen-notice">
+				<div class="game-select-topic">
+					<h1>话题选择</h1>
+					<form action="" class="game-topic-form">
+						<div>
+							<label for="topic1" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>1.多数女生喜欢选择高富帅，是为什么</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic1" value="topic1">
+						</div>
+						<div>
+							<label for="topic2" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>2.两个人在一起需要钱的支持</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic2" value="topic2">
+						</div>
+						<div>
+							<label for="topic3" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>3.恋爱和结婚是两个不同的概念</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic3" value="topic3">
+						</div>
+						<div>
+							<label for="topic4" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>4.双方性格差异是互补还是排斥</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic4" value="topic4">
+						</div>
+						<div>
+							<label for="topic5" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>5.男生就是要为女生赴汤蹈火才是真的爱她</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic5" value="topic5">
+						</div>
+						<div>
+							<label for="topic6" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>6.男生是潜力股比现成的车、房、权力更靠谱</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic6" value="topic6">
+						</div>
+						<div>
+							<label for="topic7" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>7.喜欢夜蒲的女生是不是好女生</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic7" value="topic7">
+						</div>
+						<div>
+							<label for="topic8" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>8.男生工作养女友，女友不用工作，在家就好</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic8" value="topic8">
+						</div>
+						<div>
+							<label for="topic9" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>9.一见钟情和日久情深哪个更重要</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic9" value="topic9">
+						</div>
+						<div>
+							<label for="topic10" class="game-radio-label">
+								<div class="game-radio-outer">
+									<div class="game-radio-selected"></div>
+								</div>
+								<span>10.外表美丽但内心丑陋，与外表丑陋但内心美丽，你要哪种</span>
+							</label>
+							<input type="radio" name="topic" class="game-form-radio" id="topic10" value="topic10">
+						</div>
+						<button class="game-topic-submit game-all-btn" type="submit">ok</button>
+					</form>
+				</div>
+			</div>
+			{{/if}}
+			{{#if checkGirlMV}}
+			<div class="game-mv-box">
+				<embed src="http://player.youku.com/player.php/sid/XMjg0MzY0MDE2/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" class="game-mv-content"></embed><br>
+				<button class="game-hide-mv-btn game-all-btn">返回</button>
+			</div>
+			{{/if}}
+			{{#if findLove}}
+			<div class="game-notice game-info-notice">
+					<div class="game-show-info game-text-box">
+						<h1>对方资料</h1>
+						<p>
+							<span class="game-info-label">真实姓名：</span>
+							<div class="game-info-text game-info-name"></div>
+						</p>
+						<p>
+							<span class="game-info-label">固定电话：</span>
+							<div class="game-info-text game-info-phone"></div>
+						</p>
+						<p>
+							<span class="game-info-label">手机号码：</span>
+							<div class="game-info-text game-info-mobile"></div>
+						</p>
+						<p>
+							<span class="game-info-label">出生年月：</span>
+							<div class="game-info-text game-info-birth"></div>
+						</p>
+						<p>
+							<span class="game-info-label">择偶标准：</span>
+							<div class="game-info-text game-info-standard"></div>
+						</p>
+						<p>
+							<span class="game-info-label">爱情宣言：</span>
+							<div class="game-info-text game-info-standard"></div>
+						</p>
+						<button class="game-love-notice-back game-all-btn">ok</button>
+					</div>
+					<div class="game-scroll-btn-up game-scroll-btn"></div>
+					<div class="game-scroll-btn-down game-scroll-btn"></div>
+				</div>
+			{{/if}}
+			{{#if guestLove}}
+			<div class="game-notice game-success-notice">
+				<h1>温馨小提示</h1>
+				<div class="game-notice-img game-all-image"></div>
+				<div class="game-notice-text">
+					<p>
+						热烈祝贺<span class="game-boy-success">Bove</span>和<span class="game-girl-success">Mary</span>牵手成功
+					</p>
+					<p>两位私下互留联系方式吧！</p>
+				</div>
+				<button class="game-notice-back game-all-btn">←</button>
+			</div>
+			{{/if}}
+			{{#if loseLove}}
+			<div class="game-notice game-give-up-notice">
+				<h1>温馨小提示</h1>
+				<div class="game-notice-text">
+					<p>好可惜哦！</p>
+					<p>男嘉宾选择放弃，不过没关系，</p>
+					<p>或许现在的不牵手是为了等待下一个牵手的人！</p>
+				</div>
+				<button class="game-notice-back game-all-btn">←</button>
 			</div>
 			{{/if}}
 		</div>

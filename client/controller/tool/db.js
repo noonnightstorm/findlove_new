@@ -1,3 +1,4 @@
+var win = this;
 this.db = {
 	selectUser : function(info,cb,err_cb){
 		var user = Users.findOne({account:info.account,password:info.password});
@@ -98,7 +99,16 @@ this.db = {
 			room_id : info.r_id,
 			owner : {
 				user_id : room.owner_id,
-				mv_mark : true 
+				mv_mark : true,
+				topic : {
+					mark : false,
+					content : null
+				},
+				girl_mv : {
+					mark : false,
+					content : null
+				},
+				match : false
 			},
 			part : 0,
 			users : []
@@ -142,6 +152,19 @@ this.db = {
 		Controllers.update({_id:controller_id},{$inc:{
 			part : 1
 		}},true);
+	},
+	offLight : function(user_id){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			for(var i = 0;i<controller.users.length;i++){
+				if(controller.users[i].user_id == user_id){
+					controller.users[i].light = false;
+					Controllers.update({_id:controller._id},{$set:{
+						users : controller.users
+					}},true);
+				}
+			}
+		}
 	},
 	initTalk : function(r_id){
 		var controller = Controllers.findOne({room_id:r_id});
@@ -198,7 +221,7 @@ this.db = {
 			}
 		}
 	},
-	turnTalk : function(user_id){
+	turnTalk : function(user_id,mark){
 		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
 		if(talk){
 			//先找男生
@@ -219,6 +242,11 @@ this.db = {
 						break;
 					}
 				}
+			}
+			if(mark == true){
+				setTimeout(function(){
+					win.db.turnTalk(user_id,false);
+				},10*1000);
 			}
 		}
 	},
@@ -245,6 +273,99 @@ this.db = {
 				}
 			}
 			return controller;
+		}
+	},
+	insertTopic : function(content){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			controller.owner.topic.mark = true;
+			controller.owner.topic.content = content;
+			Controllers.update({_id:controller._id},{$set:{
+				owner : controller.owner
+			}});
+		}
+	},
+	allTalk : function(content){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		if(talk){
+			talk.owner.content = null;
+			talk.owner.talk_mark = true;
+			for(var i = 0;i < talk.guest.length;i++){
+				if(controller.users[i].light == true){
+					talk.guest[i].content = null;
+					talk.guest[i].talk_mark = true;
+				}
+				else{
+					talk.guest[i].talk_mark = false;
+				}
+			}
+			controller.owner.topic.mark = true;
+			controller.owner.content = content;
+
+			Talks.update({_id:talk._id},{$set:{
+				owner : talk.owner,
+				guest : talk.guest
+			}});
+			Controllers.update({_id:controller._id},{$set:{
+				owner : controller.owner,
+			}});
+		}
+	},
+	allNoTalk : function(){
+		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		if(talk){
+			talk.owner.content = null;
+			talk.owner.talk_mark = false;
+			for(var i = 0;i < talk.guest.length;i++){
+				talk.guest[i].talk_mark = false;
+			}
+			Talks.update({_id:talk._id},{$set:{
+				owner : talk.owner,
+				guest : talk.guest
+			}});
+		}
+	},
+	initMV : function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			controller.owner.mv_mark = true;
+			for(var i = 0;i < controller.users.length;i++){
+				controller.users[i].mv_mark = true;
+			}
+			Controllers.update({_id:controller._id},{$set:{
+				owner : controller.owner,
+				users : controller.users
+			}});
+		}
+	},
+	updateGirlMV : function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			controller.owner.girl_mv.mark = true;
+			Controllers.update({_id:controller._id},{$set:{
+				owner : controller.owner,
+			}});
+		}
+	},
+	insertLove : function(girl_id){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		var room = Rooms.findOne({_id:Cookie.get("room_id")});
+		if(controller){
+			var boy = Users.findOne({_id:controller.owner.user_id});
+			var girl = Users.findOne({_id:girl_id});
+			Controllers.update({_id:controller._id},{$set:{
+				match : true,
+			}});
+			var couple = {
+				room_id : room._id,
+				room_name : room.name,
+				girl_id : girl_id,
+				girl_name : girl.name,
+				boy_id : controller.owner.user_id,
+				boy_name : boy.name
+			}
+			Couples.insert(couple);
 		}
 	}
 };

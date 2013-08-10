@@ -68,7 +68,6 @@
 	top: 0;
 	left: 0;
 	background: rgba(0,0,0,0.3);
-	display: none;
 }
 .game-notice{
 	width: 386px;
@@ -664,7 +663,7 @@
 	width: 50px;
 	height: 25px;
 	float: right;
-	margin: 10px -55px 0 0;
+	margin: 10px 40px 0 0;
 	font-size: 20px;
 }
 .prop-btn-boy{
@@ -798,4 +797,138 @@
 }
 .prop-item:hover .prop-item-hint{
 	opacity: 1;
+}
+.game-select-topic{
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -312px 0 0 -312px;
+	padding: 10px;
+	background: #fbf6d8;
+	border: 2px solid #fc90ac;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 15px #fc90ac;
+	-moz-box-shadow: 0 0 15px #fc90ac;
+	-o-box-shadow: 0 0 15px #fc90ac;
+	box-shadow: 0 0 15px #fc90ac;
+	color: #ff3385;
+	font-size: 28px;
+	line-height: 40px;
+}
+.game-select-topic h1{
+	text-align: center;
+	font-weight: normal;
+	line-height: 80px;
+}
+.game-form-radio{
+	display: none;
+}
+.game-radio-outer{
+	width: 14px;
+	height: 14px;
+	border: 2px solid #ff3585;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	display: inline-block;
+	cursor: pointer;
+}
+.game-radio-selected{
+	width: 10px;
+	height: 10px;
+	margin: 2px;
+	background: #ff3585;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	display: none;
+}
+.game-topic-submit{
+	width: 50px;
+	height: 35px;
+	float: right;
+	margin: 10px 10px 0 0;
+	font-size: 30px;
+	line-height: 35px;
+}
+.game-topic-submit:active{
+	width: 46px;
+	height: 31px;
+	margin: 12px 12px 0 2px;
+	font-size: 26px;
+	line-height: 31px;
+}
+.game-girl-mv-btn,.game-choose-girl-btn{
+	width: 55px;
+	height: 30px;
+	position: absolute;
+	margin: -220px 0 0 -25px;
+	font-size: 25px;
+}
+.game-girl-mv-btn:active,.game-choose-girl-btn:active{
+	width: 51px;
+	height: 26px;
+	margin: -218px 0 0 -23px;
+	font-size: 21px;
+}
+/*对方资料*/
+.game-info-notice{
+	overflow: hidden;
+}
+.game-show-info{
+	height: 421px;
+	overflow: hidden;
+}
+.game-info-label{
+	float: left;
+	margin: 35px 0 0 25px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.game-info-text{
+	width: 200px;
+	min-height: 20px;
+	margin: 27px 0 0 130px;
+	padding: 10px;
+	border: 3px solid #ffdbbc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background: #fff;
+	-webkit-box-shadow: 0 0 20px #ffdbbc;
+	-moz-box-shadow: 0 0 20px #ffdbbc;
+	-o-box-shadow: 0 0 20px #ffdbbc;
+	box-shadow: 0 0 20px #ffdbbc;
+	text-align: left;
+	font-size: 20px;
+}
+.game-info-notice .game-scroll-btn-up{
+	top: 50%;
+	left: 50%;
+	margin: 140px 0 0 -190px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-bottom: 20px solid rgba(255,51,133,0.7);
+}
+.game-info-notice .game-scroll-btn-down{
+	top: 50%;
+	left: 50%;
+	margin: 170px 0 0 -190px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 20px solid rgba(255,51,133,0.7);
+}
+.game-show-info .game-notice-back{
+	margin: 30px 30px 30px 0;
+}
+.game-show-info .game-notice-back:active{
+	margin: 32px 32px 32px 0;
 }

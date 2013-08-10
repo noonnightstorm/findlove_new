@@ -6,11 +6,18 @@ if (Meteor.isClient) {
 	Template.game_hall_boy.myself = function(){
 		return Users.findOne({_id : Cookie.get("user_id")});
 	};
+	Template.game_hall_boy.couple = function(){
+		return Couples.find({});
+	};
 	Template.game_hall_girl.room = function(){
 		return Rooms.find({});
 	};
 	Template.game_hall_girl.myself = function(){
+		console.log(Users.findOne({_id : Cookie.get("user_id")}));
 		return Users.findOne({_id : Cookie.get("user_id")});
+	};
+	Template.game_hall_girl.couple = function(){
+		return Couples.find({});
 	};
 	Template.game.room = function(){
 		return Rooms.findOne({_id:Cookie.get("room_id")});
@@ -100,16 +107,52 @@ if (Meteor.isClient) {
 	Template.game.showPartTips = function(){
 		//填好提示
 		var tips = [
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
+			"请各位酝酿感情，游戏准备开始！",
+			"男嘉宾自我介绍！",
+			"女嘉宾发问环节！",
+			"观看男嘉宾MV！",
+			"请男嘉宾选择话题！",
+			"男女嘉宾自由讨论！",
+			"男嘉宾选择女嘉宾的MV！",
+			"请观看女生的MV！",
+			"选择心动女生!",
+			"游戏结束，请大家有序离场！"
 		];
 		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
 		if(controller){
-			return tips[parseInt(controller.part)];
+			if(controller.part == 0){
+				return tips[0];
+			}
+			else if(controller.part == 1){
+				return tips[1];
+			}
+			else if(controller.part == 2){
+				return tips[2];
+			}
+			else if(controller.part == 3){
+				return tips[3];
+			}
+			else if(controller.part == 4){
+				if(controller.owner.topic.mark == false){
+					return tips[4];
+				}
+				else{
+					return tips[5];
+				}
+			}
+			else if(controller.part == 5){
+				return tips[6];
+			}
+			else if(controller.part == 6){
+				if(controller.owner.girl_mv.mark == true)
+					return tips[7];
+			}
+			else if(controller.part == 7){
+				return tips[8];
+			}
+			else if(controller.part == 8){
+				return tips[9];
+			}
 		}
 	}
 }

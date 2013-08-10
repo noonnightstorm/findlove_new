@@ -28,7 +28,12 @@ if (Meteor.isClient) {
 	Template.game.events({
 		"click .game-quit-btn" : win.RoomHandler.exitRoom,
 		"click .game-start-btn" : win.GameHandler.run,
+		"click .light-bulb" : win.GameHandler.lightOff,
 		"click #game-talk-btn" : win.GameHandler.talk,
-		"click .game-hide-mv-btn" : win.GameHandler.finishMV
+		"click .game-hide-mv-btn" : win.GameHandler.finishMV,
+		"submit .game-topic-form" : win.GameHandler.choiceTopic,
+		"click .game-girl-mv-btn" : win.GameHandler.addGirlMV,
+		"click .game-choose-girl-btn" : win.GameHandler.choiceLove,
+		"click .game-love-notice-back" : win.GameHandler.backToHall
 	});
 }

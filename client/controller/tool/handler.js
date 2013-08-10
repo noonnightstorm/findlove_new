@@ -150,6 +150,14 @@ win.HallHandler = {
 win.RoomHandler = {
 	addRoom : function(e){
 		e.preventDefault();
+		//检测资料
+		var user = Users.findOne({_id:Cookie.get("user_id")});
+		var profile = user.profile;
+		if(profile.real_name==""||profile.birthday==""||profile.standard==""||profile.declaration==""){
+			alert("请完善个人资料再创建房间");
+			return ;
+		}
+
 		var form = e.target,
 		info = {
 			name : form.name.value
@@ -196,6 +204,13 @@ win.RoomHandler = {
 		err_cb = function(){
 			//later
 		};
+		//检测资料
+		var user = Users.findOne({_id:Cookie.get("user_id")});
+		var profile = user.profile;
+		if(profile.real_name==""||profile.birthday==""||profile.standard==""||profile.declaration==""){
+			alert("请完善个人资料再进入房间");
+			return ;
+		}
 		win.db.addRoomNum(info,cb,err_cb);
 	},
 	exitRoom : function(){
@@ -238,7 +253,9 @@ win.GameHandler = {
 		"girlQA",
 		"boyMV",
 		"topic",
+		"showMVBtn",
 		"girlMV",
+		"choiceGirl",
 		"gameOver"
 	],
 	run : function(){
@@ -263,37 +280,62 @@ win.GameHandler = {
 		var talk = Talks.findOne({room_id : Cookie.get("room_id")});
 		var room_id = Cookie.get("room_id");
 		if(talk && room_id){
-			win.db.turnTalk(talk.owner.user_id);
-			setTimeout(function(){
-				win.db.turnTalk(talk.owner.user_id);
-				cb();
-			},10*1000);
+			win.db.turnTalk(talk.owner.user_id,false);
 		}	
+		setTimeout(function(){
+			win.db.turnTalk(talk.owner.user_id,false);
+			cb();
+		},3*1000);
 	},
 	girlQA : function(cb){
 		var talk = Talks.findOne({room_id:Cookie.get("room_id")});
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
 		if(talk){
 			function girlTalk(count,obj){
 				setTimeout(function(){
-					win.db.turnTalk(obj.guest[count-1].user_id);
+					for(var i = count;i < controller.users.length;i++){
+						if(controller.users[count].light == true){
+							win.db.turnTalk(obj.guest[count].user_id,true);
+							break;
+						}
+						else{
+							count++;
+						}
+					}
 					if(obj.guest.length<=count){
 						cb();
 						return;
 					}
-					win.db.turnTalk(obj.guest[count].user_id);
 					girlTalk(count+1,obj);
-				},10*1000);
+				},3*1000);
 			}
-			if(talk.guest.length != 0){
-				win.db.turnTalk(talk.guest[0].user_id);
-				girlTalk(1,talk);
+			if(talk.guest.length > 1){
+				for(var i = 0;i < controller.users.length;i++){
+					if(controller.users[i].light == true){
+						win.db.turnTalk(talk.guest[i].user_id,true);
+						break;
+					}
+				}
+				if(i+1 >= controller.users.length){
+					setTimeout(cb,10*1000);
+				}
+				else{
+					girlTalk(i+1,talk);
+				}
+			}
+			else{
+				if(controller.users[0].light == true){
+					win.db.turnTalk(talk.guest[0].user_id,true);
+				}
+				setTimeout(cb,3*1000);
 			}
 		}
 	},
 	boyMV : function(cb){
-		setTimeout(function(){
-			var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
-			if(controller){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			setTimeout(function(){
+	
 				//检验是否跳过这个环节
 				var mark = true;
 				//先检验男生
@@ -311,20 +353,75 @@ win.GameHandler = {
 				}
 
 				//处理结果
-				if(mark == true){
+				if(mark == true &&controller.part == 3){
 					cb();
 				}
-			}
-		},5*60*1000);
+			},5*60*1000);
+		}
 	},
 	topic : function(cb){
-		console.log("topic");
+		setTimeout(function(){
+			cb();
+		},5*1000);
+	},
+	showMVBtn : function(cb){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			win.db.allNoTalk();
+			setTimeout(function(){
+				if(controller.part == 5){
+					cb();
+				}
+			},10*1000);
+		}
 	},
 	girlMV : function(cb){
-		console.log("ready");
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			setTimeout(function(){
+				//检验是否跳过这个环节
+				var mark = true;
+				//先检验男生
+				if(controller.owner.mv_mark == true){
+					mark = false;
+				}
+				//再检验女生
+				else{
+					for(var i = 0;i < controller.users.length ;i++){
+						if(controller.users[i].mv_mark == true){
+							mark = false;
+							break;
+						}
+					}
+				}
+
+				//处理结果
+				if(mark == true &&controller.part == 3){
+					cb();
+				}
+			},5*60*1000);
+		}
+	},
+	choiceGirl : function(cb){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			setTimeout(function(){
+				if(controller.part ==7 && controller.match == false){
+					cb();
+				}
+			},5*1000);
+		}
 	},
 	gameOver : function(cb){
-		console.log("ready");
+		console.log("gameOver");
+	},
+	lightOff : function(e){
+		var target = $(e.target);
+		var u_id = target.parents(".game-girl-all").attr("u_id");
+		var user_id = Cookie.get("user_id");
+		if(user_id && user_id == u_id){
+			win.db.offLight(user_id);
+		}
 	},
 	talk : function(){
 		var talk = {
@@ -352,20 +449,43 @@ win.GameHandler = {
 				mark = false;
 			}
 			//再检验女生
-			else{
-				for(var i = 0;i < controller.users.length ;i++){
-					if(controller.users[i].mv_mark == true){
-						mark = false;
-						break;
-					}
+			for(var i = 0;i < controller.users.length ;i++){
+				if(controller.users[i].mv_mark == true){
+					mark = false;
+					break;
 				}
 			}
-
+			console.log(controller);
+			console.log(mark);
 			//处理结果
 			if(mark == true){
 				win.db.NextPart(controller._id);
 				win.GameHandler.run();
 			}	
 		}
+	},
+	choiceTopic : function(e){
+		e.preventDefault();
+		var form = $(e.target);
+		var topic = form.attr("radio");
+
+		//init Talk
+		win.db.allTalk(topic);
+	},
+	addGirlMV : function(){
+		win.db.initMV();
+		win.db.updateGirlMV();
+	},
+	choiceLove : function(){
+		var controller = Controllers.findOne({room_id:Cookie.get("room_id")});
+		if(controller){
+			var girl = this;
+			win.db.insertLove(girl._id);
+			win.db.NextPart(controller._id);
+			win.GameHandler.run();
+		}
+	},
+	backToHall : function(){
+		Meteor.Router.to("/game-hall");
 	}
 };

@@ -140,6 +140,8 @@ win.Effect = {
 	Game : {
 		init : function(){
 			win.Effect.Game.constellationMatch();
+			win.Effect.Game.topicRadioBox();
+			win.Effect.Game.setScroll();
 		},
 		constellationMatch : function(){
 			var boyDom = $(".game-boy-all");
@@ -159,6 +161,27 @@ win.Effect = {
 					boyDom.find(".game-boy-circle").addClass("game-zodiac-match");
 				}
 			}
+		},
+		topicRadioBox : function(){
+			$(".game-radio-label").click(function(){
+				var obj = $(this);
+				var value = obj.children("span").text();
+				$(".game-radio-selected").css("display","none");
+				obj.children(".game-radio-outer").children(".game-radio-selected").css("display","block");
+				obj.parents(".game-topic-form").attr("radio",value);
+			});
+		},
+		setScroll : function(){
+			$('.game-scroll-btn-down').click(function(){
+				var dialogText = $(this).siblings('.game-text-box');
+				var curScrollTop = $(dialogText).scrollTop();
+				$(dialogText).animate({scrollTop:curScrollTop+200},500);
+			});
+			$('.game-scroll-btn-up').click(function(){
+				var dialogText = $(this).siblings('.game-text-box');
+				var curScrollTop = $(dialogText).scrollTop();
+				$(dialogText).animate({scrollTop:curScrollTop-200},500);
+			});
 		}
 	}
 }
